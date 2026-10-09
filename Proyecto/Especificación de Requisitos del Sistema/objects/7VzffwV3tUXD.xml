@@ -6,7 +6,13 @@
     <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
     <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author"/>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
-    <markdownProperty name="text" category="detail"><![CDATA[Una interfaz (UI/UX) muy desactualizada que no es intuitiva ni está optimizada para dispositivos móviles. Contenidos web incompletos (equipo médico ausente y metodologías no descritas). Apartados de "Noticias" y FAQ inútiles y sin valor para el paciente. Sistema de citas deficiente que no permite elegir una hora exacta ni muestra la disponibilidad real. ]]></markdownProperty>
+    <markdownProperty name="text" category="detail"><![CDATA[**·** La solicitud de la cita depende de una llamada telefónico, lo que introduce fricción y limita la posibilidad  de iniciar la petición fuera del horario de atención.
+
+**·** La recepción recibe llamadas repetitivas sobre tarifas, localización, y lentes de contacto, generando saturación de las líneas.
+
+**·** La información sobre la cualificación y experiencia del equipo profesional aparece dispersa y no se presenta de forma suficientemente estructurada.
+
+**·** Según estimaciones iniciales del personal de recepción, se reciben un promedio aproximado de 30 a 40 llamadas diarias, de las cuales se estima que cerca del 40% corresponden a consultas de información general (tarifas, ubicación y uso de lentes de contacto) y no a reservas directas. El tiempo medio dedicado a la atención telefónica por consulta informativa ronda los 3 a 5 minutos por llamada, saturando la línea en horas punta especialmente de 10:00 a 12:00 horas.]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>
