@@ -6,7 +6,11 @@
     <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
     <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author"/>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
-    <markdownProperty name="text" category="detail"><![CDATA[Oftalmólogos Díaz es una clínica familiar de gran prestigio fundada en 1962, ubicada en Las Palmas de Gran Canaria. Trabaja con un enfoque orientado a pacientes de distintas edades, ofreciendo desde revisiones rutinarias hasta tratamientos quirúrgicos complejos. El reto actual al que se enfrenta la clínica es la actualización tecnológica de su consulta, puesto que sufren de un entorno digital obsoleto que no permite un agendamiento en tiempo real ni presenta la información de manera eficiente. ]]></markdownProperty>
+    <markdownProperty name="text" category="detail"><![CDATA[Oftalmólogos Díaz ofrece servicios de oftalmología. En este proyecto intervienen los pacientes, los profesionales sanitarios y el personal de recepción. La web contiene o deberá contener la ubicación y el contacto de la clínica, los servicios, los perfiles profesionales y las respuestas a las dudas más habituales. 
+
+La web no sustituye la atención clínica. Su objetivo es facilitar el acceso a la información y la solicitud de citas. Debe quedar claro cuándo se ha recibido una solicitud y cuándo la cita está confirmada. La clínica revisará la información sanitaria antes de publicarla. 
+
+Entre las consultas frecuentes se encuentran las tarifas, la ubicación y el uso de lentes de contacto. También se ha señalado que la información sobre la cualificación del equipo está dispersa. El catálogo de servicios, los perfiles profesionales, las tarifas y las respuestas que se publiquen deberán ser validados por la clínica. ]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>
