@@ -9,7 +9,9 @@
     <traceProperty name="prepared-for" category="dependencies" acceptedTargets="organization" traceType=":Proteus-dependency">
       <trace target="AKiqPgSQciLM" traceType=":Proteus-dependency"/>
     </traceProperty>
-    <traceProperty name="prepared-by" category="dependencies" acceptedTargets="organization" traceType=":Proteus-author"/>
+    <traceProperty name="prepared-by" category="dependencies" acceptedTargets="organization" traceType=":Proteus-author">
+      <trace target="JjX5RGwDay5J" traceType=":Proteus-author"/>
+    </traceProperty>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>
   <children>
