@@ -6,12 +6,12 @@
       <number>006</number>
       <suffix><![CDATA[]]></suffix>
     </codeProperty>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Gestión interna de agendas, citas e historias clínicas]]></stringProperty>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Descripción del proceso — Gestión interna de agendas, citas e historias clínicas]]></stringProperty>
     <dateProperty name=":Proteus-date" category="general">2026-10-11</dateProperty>
     <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
     <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author"/>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
-    <markdownProperty name="description" category="detail"><![CDATA[El personal autorizado accede al panel interno y selecciona la operación que necesita realizar. El sistema comprueba su identidad y sus permisos. Recepción puede consultar y gestionar agendas y citas, mientras que el profesional sanitario autorizado puede consultar o actualizar historias clínicas. El sistema guarda los cambios y permite comprobar el resultado. Si el usuario no tiene permisos suficientes, deniega el acceso. Corresponde al modelo BPMN BPRO-003 del apartado 4.2.]]></markdownProperty>
+    <markdownProperty name="description" category="detail"><![CDATA[El proceso permite al personal autorizado gestionar la información desde el panel interno de la clínica. El usuario accede al sistema y selecciona la operación que necesita realizar. Antes de mostrar o modificar información, el sistema comprueba su identidad y los permisos asociados a su perfil. Si no dispone de autorización suficiente, se deniega el acceso. Si los permisos son válidos, el personal de recepción puede consultar y gestionar agendas y citas, mientras que el profesional sanitario autorizado puede consultar o actualizar historias clínicas. El sistema guarda los cambios y permite comprobar el resultado de la operación. Este texto corresponde al modelo BPMN BPRO-003 del apartado 4.2.]]></markdownProperty>
     <fileProperty name="diagram" category="detail" tooltip="file-info"><![CDATA[]]></fileProperty>
     <enumProperty name="importance" category="detail" tooltip="importance" choices="tbd critical high medium low optional">high</enumProperty>
     <integerProperty name="width" category="detail" tooltip="width-info">98</integerProperty>
