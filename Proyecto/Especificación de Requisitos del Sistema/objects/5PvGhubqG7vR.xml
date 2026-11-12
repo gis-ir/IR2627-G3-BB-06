@@ -13,6 +13,8 @@ principalmente en la modernización de su sistema de información web y en alcan
 
 La web mostrará los servicios oftalmológicos y el equipo profesional, ofrecerá información práctica y preguntas frecuentes, se implementará un sistema de solicitud de citas que permitirá a los pacientes seleccionar tramos horarios específicos, enviando solicitudes que ingresarán directamente a un sistema centralizado digital, donde el equipo de recepción revisará la disponibilidad de la agenda y comunicará la confirmación final al paciente.
 
+Además de la gestión básica de citas, el sistema integrará un módulo avanzado de gestión de agendas médicas por especialidad (medicina y cirugía ocular, oftalmología pediátrica, párpados y vías lagrimales, lentes de contacto). Se configurarán calendarios independientes para cada profesional sanitario, permitiendo definir horarios de consulta personalizados, descansos y bloqueos por vacaciones. El sistema automatizará la asignación de citas en función de la disponibilidad real de cada especialista y enviará recordatorios automáticos a los pacientes.
+
 En principio, quedan fuera del alcance el diagnóstico o tratamiento médico en línea, la historia clínica electrónica, la facturación, el pago en línea y las integraciones con otros sistemas de gestión clínica.]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
