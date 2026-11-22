@@ -56,7 +56,7 @@
 
 **Clases del DAS implicadas:** Cita, FranjaHoraria, CambioEstadoCita, Notificacion, Recepcionista
 
-**Comentarios:** El prototipo guarda siempre CONFIRMADA como estado anterior; debe guardarse el estado real.]]></markdownProperty>
+**Comentarios:**]]></markdownProperty>
   </properties>
   <children/>
 </object>

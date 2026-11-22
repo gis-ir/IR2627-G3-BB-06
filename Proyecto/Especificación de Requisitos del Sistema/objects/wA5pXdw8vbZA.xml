@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="wA5pXdw8vbZA" classes="specific-data" acceptedChildren=":Proteus-none" acceptedParents="information-requirement">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Estado de publicación]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[Fase editorial del contenido (BORRADOR, PENDIENTE_REVISION o PUBLICADO).]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

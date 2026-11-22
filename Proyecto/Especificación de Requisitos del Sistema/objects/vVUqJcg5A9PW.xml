@@ -51,7 +51,7 @@
 
 **Clases del DAS implicadas:** Paciente, Cita, FranjaHoraria, ProfesionalSanitario, Gabinete, Notificacion
 
-**Comentarios:** **[A COORDINAR]** El prototipo sólo pide el DNI. Se propone pedir también el código de solicitud para que nadie pueda ver las citas de otra persona sabiendo su DNI (RGPD, RQNF-016).]]></markdownProperty>
+**Comentarios:** ]]></markdownProperty>
   </properties>
   <children/>
 </object>

@@ -62,7 +62,7 @@
 
 **Clases del DAS implicadas:** Paciente, Cita, FranjaHoraria, ServicioOftalmologico, PrestacionServicio, CambioEstadoCita, Notificacion, Recepcionista
 
-**Comentarios:** La confirmación supervisada (REGN-012 / BR-04) sólo afecta al canal WEB: las citas telefónicas y presenciales nacen CONFIRMADA. En el prototipo, al dar de alta un paciente nuevo por teléfono se rellena una fecha de nacimiento ficticia; aquí se exige pedirla, porque es obligatoria en Paciente.]]></markdownProperty>
+**Comentarios:** La confirmación supervisada (REGN-012 / BR-04) sólo afecta al canal WEB: las citas telefónicas y presenciales nacen CONFIRMADA. ]]></markdownProperty>
   </properties>
   <children/>
 </object>
