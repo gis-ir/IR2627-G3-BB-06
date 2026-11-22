@@ -10,11 +10,11 @@
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
     <markdownProperty name="text" category="detail"><![CDATA[**FAQ:** Inventario de las dudas más habituales de los pacientes (como tarifas, ubicación o lentes) que se buscan automatizar o resolver en la clínica
 
-**HTTPS:** Protocolo de comunicación web que cifra los datos entre el navegador del paciente y el servidor de la clínica, garantizando la seguridad de la información exigidad por el RGPD
+**HTTPS:** Protocolo de comunicación web que cifra los datos entre el navegador del paciente y el servidor de la clínica, garantizando la seguridad de la información exigida por el RGPD
 
 **RGPD:** Normativa legal obligatoria que el software de la clínica deberá cumplir al manejar datos médicos.
 
-**PHP:** Lenguaje de programación que se ejecutará en el servidor (backend) para gestionar la página web o el sistema de la clínica.
+**PHP:** Lenguaje de programación utilizado en el servidor de la web antigua de la clínica.
 
 **RAM:** Tipo de memoria principal de los ordenadores. Se utilizará al definir los Requisitos No Funcionales (Hardware) para indicar qué memoria mínima necesitan los equipos de la clínica para ejecutar el programa sin lentitud.
 
