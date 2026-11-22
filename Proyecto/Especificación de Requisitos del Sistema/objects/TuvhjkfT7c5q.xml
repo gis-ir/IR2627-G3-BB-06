@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="TuvhjkfT7c5q" classes="traceable-object paragraph" acceptedChildren=":Proteus-none" acceptedParents=":Proteus-document section" selectedCategory="detail">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Descripcion Figura 5.2.13]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author"/>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
+    <markdownProperty name="text" category="detail"><![CDATA[**Figura 5.2.13: Peticiones del Equipo Médico.** Muestra dentro de la pestaña Peticiones del Equipo Médico (junto a un contador de solicitudes pendientes) el listado de propuestas enviadas desde Consulta Médica. Cada tarjeta indica el código de la petición y el médico que la envió (por ejemplo, PCW-01 - Dr. Antonio Díaz), el cambio solicitado (Publicar servicio SRV-04, Estudio Preoperatorio Refractivo, 95 €) y su estado (PENDIENTE). Mientras esté pendiente, el administrador dispone de los botones Rechazar y Marcar resuelta para gestionar la solicitud.]]></markdownProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>
