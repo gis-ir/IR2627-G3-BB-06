@@ -9,66 +9,59 @@
     </traceProperty>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
     <markdownProperty name="text" category="detail"><![CDATA[#### 5. `Gabinete`
-- **Descripción:** Espacio físico o sala de exploración equipada donde se desarrollan las consultas oftalmológicas.
+- **Descripción:** Sala física de exploración o consulta oftalmológica donde se asignan las franjas horarias.
 - **Atributos:**
-  - `idGabinete: String` `[1]` — Código único de la sala.
-  - `nombre: String` `[1]` — Denominación del gabinete (ej. "Gabinete 1 - Exploración").
-  - `equipamiento: String` `[0..1]` — Descripción del instrumental óptico disponible.
-  - `activo: Boolean` `[1]` — Indica si el gabinete está operativo.
+  - `codigoSala: Texto (único)` `[1]` — Código identificativo único del gabinete.
+  - `nombre: Texto` `[1]` — Denominación de la sala.
+  - `equipamientoDisponible: Texto` `[1]` — Descripción del equipamiento clínico disponible.
 - **Asociaciones:**
-  - `alberga` (`1` → `0..*` `FranjaHoraria`): Tramos horarios asignados a dicho espacio.
+  - `asignadaEn` (`1..1` → `0..*` `FranjaHoraria`): Franjas horarias programadas en dicho gabinete.
 
 #### 6. `FranjaHoraria`
-- **Descripción:** Intervalo de tiempo planificado en el que un `ProfesionalSanitario` y un `Gabinete` están asignados para atender pacientes.
+- **Descripción:** Intervalo de tiempo asignado a un `ProfesionalSanitario` y a un `Gabinete` en una fecha determinada.
 - **Atributos:**
-  - `idFranja: String` `[1]` — Identificador único de la franja.
-  - `fecha: Date` `[1]` — Día natural de la franja.
-  - `horaInicio: Time` `[1]` — Hora de inicio del tramo.
-  - `horaFin: Time` `[1]` — Hora de finalización del tramo.
+  - `fecha: Fecha` `[1]` — Día natural de la franja.
+  - `horaInicio: Hora` `[1]` — Hora de inicio del intervalo.
+  - `horaFin: Hora` `[1]` — Hora de finalización del intervalo.
   - `estado: EstadoFranja` `[1]` — Estado operativo (`DISPONIBLE`, `OCUPADA`, `INACTIVA`).
-- **Restricciones OCL (`[BR-02]` - No solapamiento horario):**
-  - `inv HoraValida`: `self.horaFin > self.horaInicio`
-  - `inv SinSolapamientoProfesional`: `FranjaHoraria.allInstances()->forAll(f | f <> self and f.profesional = self.profesional and f.fecha = self.fecha and f.estado <> EstadoFranja::INACTIVA and self.estado <> EstadoFranja::INACTIVA implies (self.horaFin <= f.horaInicio or self.horaInicio >= f.horaFin))`
-  - `inv SinSolapamientoGabinete`: `FranjaHoraria.allInstances()->forAll(f | f <> self and f.gabinete = self.gabinete and f.fecha = self.fecha and f.estado <> EstadoFranja::INACTIVA and self.estado <> EstadoFranja::INACTIVA implies (self.horaFin <= f.horaInicio or self.horaInicio >= f.horaFin))`
-  - `inv MaximaUnaCitaActiva`: `self.citas->select(c | c.estadoActual <> EstadoCita::CANCELADA)->size() <= 1`
+- **Restricciones OCL (`[BR-02]` - No solapamiento y validez horaria):**
+
 
 #### 7. `Cita`
-- **Descripción:** Entidad central que representa la reserva de atención solicitada por un paciente para un servicio oftalmológico concreto.
+- **Descripción:** Reserva de atención solicitada por un paciente para un servicio oftalmológico. Su estado vigente (`/estadoActual`) es un atributo derivado del último registro en `CambioEstadoCita`.
 - **Atributos:**
-  - `idCita: String` `[1]` — Código único de la cita.
-  - `fechaSolicitud: DateTime` `[1]` — Marca temporal en la que se registró la petición.
-  - `canalSolicitud: CanalSolicitud` `[1]` — Origen de la solicitud (`WEB`, `TELEFONICO`, `PRESENCIAL`).
-  - `motivoConsulta: String` `[0..1]` — Descripción breve aportada por el paciente.
-  - `estadoActual: EstadoCita` `[1]` — Estado vigente (`PENDIENTE`, `CONFIRMADA`, `CANCELADA`, `REPROGRAMADA`, `ATENDIDA`, `NO_PRESENTADA`).
+  - `codigoCita: Texto (único)` `[1]` — Código único identificativo de la cita.
+  - `fechaHoraSolicitud: FechaHora` `[1]` — Fecha y hora en que se registró la solicitud.
+  - `motivoBreve: Texto` `[0..1]` — Descripción breve del motivo de consulta.
+  - `canalSolicitud: CanalCita` `[1]` — Canal de entrada (`WEB`, `TELEFONICO`, `PRESENCIAL`).
+  - `/estadoActual: EstadoCita` `[1]` — Atributo derivado correspondiente al `estadoNuevo` del último `CambioEstadoCita` según `fechaHoraCambio`.
 - **Asociaciones:**
-  - `ocupa` (`0..*` → `0..1` `FranjaHoraria`): Franja asignada una vez confirmada la cita.
-  - `solicita` (`0..*` → `1` `Paciente`): Paciente titular de la cita.
-  - `correspondeA` (`0..*` → `1` `ServicioOftalmologico`): Servicio solicitado.
-  - `reprogramaA` (`0..1` → `0..1` `Cita`): Asociación reflexiva que vincula una cita reprogramada con la nueva cita generada.
-  - `historialEstados` (`1` → `1..*` `CambioEstadoCita`): Composición con la traza histórica de estados.
-  - `genera` (`1` → `0..*` `Notificacion`): Avisos enviados al paciente respecto a esta cita.
-- **Restricciones OCL (`[BR-04]` - Confirmación supervisada):**
-  - `inv CitaWebPendienteSinConfirmacion`: `self.canalSolicitud = CanalSolicitud::WEB and self.estadoActual = EstadoCita::PENDIENTE implies self.recepcionistaGestor->isEmpty()`
-  - `inv CitaConfirmadaConFranjaYRecepcion`: `self.estadoActual = EstadoCita::CONFIRMADA implies (self.franjaHoraria->notEmpty() and self.recepcionistaGestor->notEmpty())`
+  - `acuerdaOcupar` (`0..*` → `0..1` `FranjaHoraria`): Franja horaria asignada al confirmar la cita.
+  - `solicita` (`0..*` → `1..1` `Paciente`): Paciente que solicita la cita.
+  - `solicitaPara` (`0..*` → `1..1` `ServicioOftalmologico`): Servicio oftalmológico requerido.
+  - `reprogramaA` (`citaOriginal 0..1` → `citaNueva 0..1` `Cita`): Asociación reflexiva hacia la nueva cita en caso de reprogramación.
+  - `registraHistorial` (`1..1` → `1..*` `CambioEstadoCita`): Composición con el historial cronológico de cambios de estado.
+  - `genera` (`1..1` → `0..*` `Notificacion`): Notificaciones emitidas asociadas a la cita.
+  - `daLugarA` (`1..1` → `0..1` `ConsultaOftalmologica`): Acto clínico resultante tras ser atendida.
+- **Restricciones OCL (`[BR-04]` - Confirmación supervisada TO-BE):**
+
+ 
 
 #### 8. `CambioEstadoCita`
-- **Descripción:** Registro de auditoría que documenta cada transición de estado experimentada por una cita.
+- **Descripción:** Evento histórico que registra cada transición de estado de una cita y permite derivar `/estadoActual`.
 - **Atributos:**
-  - `idCambio: String` `[1]` — Identificador único del evento de cambio.
-  - `estadoAnterior: EstadoCita` `[0..1]` — Estado previo (nulo en el momento de creación).
-  - `estadoNuevo: EstadoCita` `[1]` — Estado resultante tras la transición.
-  - `fechaHoraCambio: DateTime` `[1]` — Instante exacto del cambio.
-  - `observaciones: String` `[0..1]` — Motivo de cancelación, reprogramación o incidencia.
+  - `fechaHoraCambio: FechaHora` `[1]` — Instante exacto en que se produce la transición.
+  - `estadoAnterior: EstadoCita` `[0..1]` — Estado previo (nulo en el alta inicial).
+  - `estadoNuevo: EstadoCita` `[1]` — Estado al que pasa la cita.
+  - `observaciones: Texto` `[0..1]` — Notas o justificación del cambio.
 
 #### 9. `Notificacion`
-- **Descripción:** Comunicación emitida hacia el paciente para informar sobre la confirmación, modificación, cancelación o recordatorio de una cita.
+- **Descripción:** Aviso automático o manual enviado al paciente sobre el estado o recordatorio de su cita.
 - **Atributos:**
-  - `idNotificacion: String` `[1]` — Identificador del envío.
-  - `canalEnvio: CanalNotificacion` `[1]` — Medio utilizado (`EMAIL`, `SMS`).
-  - `asunto: String` `[1]` — Título o resumen del aviso.
-  - `contenido: String` `[1]` — Cuerpo del mensaje enviado.
-  - `fechaEnvio: DateTime` `[1]` — Marca temporal del envío.
-  - `enviada: Boolean` `[1]` — Confirmación de entrega al proveedor externo.]]></markdownProperty>
+  - `tipo: TipoNotificacion` `[1]` — Categoría del aviso (confirmación, recordatorio, cancelación, reprogramación).
+  - `medio: MedioNotificacion` `[1]` — Canal de envío utilizado (`EMAIL`, `SMS`).
+  - `fechaHoraEnvio: FechaHora` `[1]` — Marca temporal de envío.
+  - `entregada: Booleano` `[1]` — Indica si el proveedor confirmó la entrega.]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>

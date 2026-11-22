@@ -9,43 +9,45 @@
     </traceProperty>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
     <markdownProperty name="text" category="detail"><![CDATA[#### 1. `PersonalClinica` (Clase abstracta)
-- **Descripción:** Clase base abstracta que representa a cualquier empleado o colaborador dado de alta en el sistema de gestión de la clínica oftalmológica. Centraliza los datos identificativos, de contacto y el estado laboral.
+- **Descripción:** Clase base abstracta que representa a cualquier empleado dado de alta en la clínica oftalmológica. Su especialización (`rolPersonal`) es `{complete, overlapping}`, por lo que un empleado puede desempeñar uno o varios roles simultáneamente.
 - **Atributos:**
-  - `idPersonal: String` `[1]` — Identificador único del empleado en el sistema.
-  - `nombre: String` `[1]` — Nombre propio del empleado.
-  - `apellidos: String` `[1]` — Apellidos del empleado.
-  - `email: String` `[1]` — Correo electrónico corporativo y de acceso al sistema.
-  - `telefono: String` `[0..1]` — Teléfono de contacto interno.
-  - `activo: Boolean` `[1]` — Indica si el empleado tiene el acceso habilitado en la clínica.
-- **Relaciones:** Generalización hacia `ProfesionalSanitario`, `AdministradorContenidos` y `Recepcionista`.
+  - `idEmpleado: Texto (único)` `[1]` — Identificador único del empleado en el sistema.
+  - `nombre: Texto` `[1]` — Nombre propio del empleado.
+  - `apellidos: Texto` `[1]` — Apellidos del empleado.
+  - `email: Texto` `[1]` — Correo electrónico corporativo.
+  - `telefono: Texto` `[1]` — Teléfono de contacto.
+  - `activo: Booleano` `[1]` — Indica si el empleado está activo en el sistema.
+- **Relaciones:** Generalización `{complete, overlapping}` hacia `AdministradorContenidos`, `ProfesionalSanitario` y `Recepcionista`.
 
 #### 2. `ProfesionalSanitario` (Especialización de `PersonalClinica`)
-- **Descripción:** Representa al personal médico y optometrista que atiende consultas, dispone de agenda propia y, en caso de ser responsable clínico, valida contenidos médicos antes de su publicación.
+- **Descripción:** Personal médico y optometrista que dispone de agenda, presta servicios oftalmológicos, atiende consultas y, si es responsable clínico, valida contenidos públicos.
 - **Atributos:**
-  - `numeroColegiado: String` `[1]` — Número oficial de colegiación sanitaria.
-  - `especialidad: String` `[1]` — Especialidad clínica (ej. Oftalmología general, Retina, Cirugía refractiva).
-  - `esResponsableClinico: Boolean` `[1]` — Indica si posee atribuciones para validar contenidos públicos médicos.
+  - `numColegiado: Texto (único)` `[1]` — Número oficial de colegiación sanitaria.
+  - `especialidad: Texto` `[1]` — Especialidad clínica del profesional.
+  - `biografiaPublica: Texto` `[0..1]` — Perfil profesional mostrado en el portal web.
+  - `formacion: Texto` `[0..1]` — Titulación y formación académica relevante.
+  - `esResponsableClinico: Booleano` `[1]` — Indica si tiene autorización para validar contenidos públicos médicos (`[BR-03]`).
 - **Asociaciones:**
-  - `disponeDe` (`1` → `0..*` `FranjaHoraria`): Tramos horarios asignados a su agenda.
-  - `atiende` (`1` → `0..*` `ConsultaOftalmologica`): Consultas clínicas realizadas por el facultativo.
+  - `disponeDe` (`1..1` → `0..*` `FranjaHoraria`): Tramos horarios asignados a su agenda.
+  - `presta` (`1..*` ↔ `1..*` `ServicioOftalmologico` mediante `PrestacionServicio`): Servicios que está habilitado para realizar.
   - `valida` (`0..1` → `0..*` `ContenidoPublico`): Contenidos públicos aprobados clínicamente.
-  - `solicitaCambio` (`1` → `0..*` `PeticionCambioWeb`): Peticiones de actualización web enviadas.
+  - `solicita` (`1..1` → `0..*` `PeticionCambioWeb`): Peticiones de actualización web enviadas.
+  - Asociación con `ConsultaOftalmologica` (`1..1` → `0..*`): Consultas atendidas por el facultativo.
 
 #### 3. `Recepcionista` (Especialización de `PersonalClinica`)
-- **Descripción:** Personal administrativo encargado de la atención al paciente, la gestión de citas, la supervisión de solicitudes web y el envío de notificaciones.
+- **Descripción:** Personal administrativo encargado de tramitar las solicitudes de cita, acordar franjas horarias y confirmar las citas recibidas por canal web.
 - **Atributos:**
-  - `turnoAsignado: String` `[1]` — Turno habitual de trabajo (`MAÑANA`, `TARDE`, `COMPLETO`).
+  - `turnoAsignado: TurnoLaboral` `[1]` — Turno laboral asignado al recepcionista.
 - **Asociaciones:**
-  - `gestiona` (`0..1` → `0..*` `Cita`): Citas tramitadas o confirmadas por recepción.
-  - `registraCambio` (`1` → `0..*` `CambioEstadoCita`): Transiciones de estado registradas en auditoría.
+  - `tramita` (`0..1` → `0..*` `Cita`): Citas gestionadas y confirmadas desde recepción.
 
 #### 4. `AdministradorContenidos` (Especialización de `PersonalClinica`)
-- **Descripción:** Perfil encargado de la edición, mantenimiento y actualización del catálogo de servicios y contenidos informativos del portal web público.
+- **Descripción:** Perfil encargado de redactar y mantener los contenidos del portal web y aplicar las peticiones de cambio solicitadas por el personal sanitario.
 - **Atributos:**
-  - `permisosEdicion: String` `[1]` — Nivel o ámbito de permisos sobre el gestor de contenidos.
+  - `nivelAcceso: Texto` `[1]` — Nivel de privilegios dentro del gestor de contenidos web.
 - **Asociaciones:**
-  - `edita` (`1` → `0..*` `ContenidoPublico`): Contenidos creados o modificados.
-  - `resuelve` (`0..1` → `0..*` `PeticionCambioWeb`): Peticiones de cambio tramitadas.]]></markdownProperty>
+  - `redacta` (`1..1` → `0..*` `ContenidoPublico`): Contenidos públicos creados o editados.
+  - `aplica` (`0..1` → `0..*` `PeticionCambioWeb`): Peticiones de cambio web resueltas.]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>

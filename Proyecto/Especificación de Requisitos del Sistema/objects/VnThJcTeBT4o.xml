@@ -8,53 +8,56 @@
       <trace target="2S4YtgY2VH2p" traceType=":Proteus-author"/>
     </traceProperty>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
-    <markdownProperty name="text" category="detail"><![CDATA[#### 13. `ServicioOftalmologico`
-- **Descripción:** Elemento del catálogo asistencial ofertado por la clínica (consultas diagnósticas, pruebas complementarias o intervenciones).
+    <markdownProperty name="text" category="detail"><![CDATA[#### 13. `ContenidoPublico` (Clase abstracta)
+- **Descripción:** Clase base abstracta para toda información publicada en el portal web de la clínica (incluidos los servicios oftalmológicos), sometida a flujo de revisión y validación clínica (`[BR-03]`). Su especialización (`tipoContenido`) es `{complete, disjoint}`.
 - **Atributos:**
-  - `idServicio: String` `[1]` — Código único del servicio.
-  - `nombre: String` `[1]` — Nombre comercial y clínico del servicio.
-  - `descripcion: String` `[1]` — Detalle del procedimiento y preparación.
-  - `duracionEstimadaMin: Integer` `[1]` — Duración estándar en minutos.
-  - `precioOrientativo: Float` `[0..1]` — Tarifa de referencia.
-  - `activo: Boolean` `[1]` — Disponibilidad actual del servicio.
-
-#### 14. `PrestacionServicio`
-- **Descripción:** Clase asociativa que detalla cada servicio oftalmológico aplicado dentro de una consulta concreta y las observaciones clínicas asociadas.
-- **Atributos:**
-  - `cantidad: Integer` `[1]` — Número de unidades o pruebas realizadas.
-  - `observacionesClinicas: String` `[0..1]` — Notas técnicas de ejecución del servicio.
-
-#### 15. `ContenidoPublico` (Clase abstracta)
-- **Descripción:** Clase base para toda información divulgativa publicada en el portal web de la clínica, sujeta a flujo de revisión y validación clínica.
-- **Atributos:**
-  - `idContenido: String` `[1]` — Identificador único del contenido.
-  - `titulo: String` `[1]` — Encabezado visible en la web.
-  - `cuerpo: String` `[1]` — Texto completo del contenido.
+  - `titulo: Texto` `[1]` — Título público del contenido.
   - `estadoPublicacion: EstadoPublicacion` `[1]` — Estado editorial (`BORRADOR`, `PENDIENTE_REVISION`, `PUBLICADO`, `RETIRADO`).
-  - `fechaPublicacion: DateTime` `[0..1]` — Fecha de puesta en producción.
-- **Restricciones OCL (`[BR-03]` - Validación clínica obligatoria):**
-  - `inv PublicacionExigeResponsableClinico`: `self.estadoPublicacion = EstadoPublicacion::PUBLICADO implies (self.validador->notEmpty() and self.validador.esResponsableClinico = true and self.fechaPublicacion->notEmpty())`
-
-#### 16. `PreguntaFrecuente` (Especialización de `ContenidoPublico`)
-- **Descripción:** Contenido público estructurado en formato pregunta-respuesta para resolver dudas habituales de los pacientes.
+  - `fechaPublicacion: FechaHora` `[0..1]` — Fecha y hora de publicación efectiva.
+- **Asociaciones:**
+  - `redacta` (`0..*` ← `1..1` `AdministradorContenidos`): Administrador que crea o edita el contenido.
+  - `valida` (`0..*` ← `0..1` `ProfesionalSanitario`): Responsable clínico que valida el contenido antes de su publicación.
+  - `afectaA` (`0..*` ← `0..*` `PeticionCambioWeb`): Peticiones de cambio vinculadas a este contenido.
+- **Restricciones OCL (`[BR-03]` - Validación clínica obligatoria ON-01):**
+ 
+#### 14. `PreguntaFrecuente` (Especialización de `ContenidoPublico`)
+- **Descripción:** Pregunta y respuesta informativa publicada en la sección de dudas frecuentes de la web.
 - **Atributos:**
-  - `categoria: String` `[1]` — Agrupación temática (ej. "Citas", "Cirugía", "Seguros").
-  - `ordenVisualizacion: Integer` `[1]` — Prioridad de ordenación en el listado web.
+  - `respuesta: Texto` `[1]` — Texto de respuesta a la pregunta planteada.
+  - `categoria: CategoriaFAQ` `[1]` — Categoría temática de la pregunta.
+  - `ordenVisualizacion: Entero` `[1]` — Posición de ordenación en el portal.
 
-#### 17. `SeccionInformativa` (Especialización de `ContenidoPublico`)
-- **Descripción:** Página o bloque informativo sobre patologías oculares, tratamientos, equipo médico o instalaciones de la clínica.
+#### 15. `SeccionInformativa` (Especialización de `ContenidoPublico`)
+- **Descripción:** Página o bloque editorial informativo sobre patologías, tratamientos o instalaciones de la clínica.
 - **Atributos:**
-  - `slugUrl: String` `[1]` — Identificador amigable para la ruta web.
-  - `resumen: String` `[0..1]` — Entradilla o descripción breve de la sección.
+  - `slugUrl: Texto (único)` `[1]` — Identificador único para la URL amigable.
+  - `cuerpoTexto: Texto` `[1]` — Contenido textual completo de la sección.
+
+#### 16. `ServicioOftalmologico` (Especialización de `ContenidoPublico`)
+- **Descripción:** Servicio asistencial o prueba diagnóstica ofertada por la clínica, cuya ficha pública también requiere validación clínica (`[BR-03]`) antes de mostrarse en la web.
+- **Atributos:**
+  - `codigo: Texto (único)` `[1]` — Código interno único del servicio.
+  - `descripcionPublica: Texto` `[1]` — Descripción informativa visible para los pacientes.
+  - `duracionEstimadaMin: Entero` `[1]` — Duración estándar prevista en minutos.
+  - `tarifaBase: Real` `[1]` — Tarifa general de referencia del servicio.
+  - `requiereEquipamientoEspecial: Booleano` `[1]` — Indica si precisa instrumental o gabinete especializado.
+- **Asociaciones:**
+  - `presta` (`1..*` ↔ `1..*` `ProfesionalSanitario` mediante `PrestacionServicio`): Profesionales habilitados para prestar el servicio.
+  - `solicitaPara` (`1..1` ← `0..*` `Cita`): Citas solicitadas para este servicio.
+
+#### 17. `PrestacionServicio` (Clase asociativa)
+- **Descripción:** Clase asociativa entre `ProfesionalSanitario` y `ServicioOftalmologico` que registra la habilitación de un facultativo para realizar un servicio y su tarifa específica si aplica.
+- **Atributos:**
+  - `tarifaEspecifica: Real` `[0..1]` — Tarifa personalizada del profesional para ese servicio (sobrescribe `tarifaBase` si existe).
+  - `fechaHabilitacion: Fecha` `[1]` — Fecha desde la que el profesional está habilitado para prestar dicho servicio.
 
 #### 18. `PeticionCambioWeb`
-- **Descripción:** Solicitud formal emitida por un profesional sanitario para crear, actualizar o retirar información en el portal web.
+- **Descripción:** Solicitud emitida por un `ProfesionalSanitario` para que un `AdministradorContenidos` modifique, cree o retire contenidos públicos del portal web.
 - **Atributos:**
-  - `idPeticion: String` `[1]` — Identificador de la solicitud.
-  - `descripcionCambio: String` `[1]` — Detalle de la modificación solicitada.
-  - `fechaSolicitud: DateTime` `[1]` — Momento de creación de la petición.
+  - `fechaSolicitud: FechaHora` `[1]` — Marca temporal de registro de la petición.
+  - `descripcionCambio: Texto` `[1]` — Detalle de los cambios solicitados.
   - `estado: EstadoPeticion` `[1]` — Estado de tramitación (`PENDIENTE`, `APLICADA`, `RECHAZADA`).
-  - `fechaResolucion: DateTime` `[0..1]` — Fecha en la que administración resuelve la petición.]]></markdownProperty>
+  - `fechaResolucion: FechaHora` `[0..1]` — Fecha y hora en que administración resuelve la petición.]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>
