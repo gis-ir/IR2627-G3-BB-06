@@ -17,6 +17,15 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista cancele una cita a petición del paciente o de la clínica.
 
+**Secuencia normal**
+
+1. El recepcionista localiza la cita en la agenda general (CU-010) y elige «Cancelar».
+2. El sistema pide el motivo de la cancelación y el medio de notificación.
+3. El recepcionista indica el motivo y confirma la cancelación.
+4. El sistema pasa la cita a CANCELADA y, si tenía franja, la deja en estado DISPONIBLE [REGN-002].
+5. El sistema registra el cambio de estado con el estado anterior real (PENDIENTE o CONFIRMADA), el motivo y el recepcionista [REGN-011].
+6. Se realiza el caso de uso CU-008 con tipo «cancelación».
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión y la cita está PENDIENTE o CONFIRMADA.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita está CANCELADA y su franja, si la tenía, vuelve a estar disponible.]]></markdownProperty>
@@ -49,12 +58,5 @@
 
 **Comentarios:** El prototipo guarda siempre CONFIRMADA como estado anterior; debe guardarse el estado real.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="GscYU9Yt3MwT"/>
-    <child id="YgXz2huEEYhX"/>
-    <child id="7Sk29vgrxCdn"/>
-    <child id="TBHECRCJAYK2"/>
-    <child id="UwnckhUjC7T4"/>
-    <child id="PYm8g6VN4jZq"/>
-  </children>
+  <children/>
 </object>

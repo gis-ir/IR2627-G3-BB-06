@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="m9Sf2oaXZ85S" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 2]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema compone el mensaje con el código de la cita, el servicio, el estado y, si tiene franja, la fecha, la hora, el profesional y el gabinete.]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

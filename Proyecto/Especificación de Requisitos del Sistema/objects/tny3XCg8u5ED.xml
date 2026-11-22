@@ -17,6 +17,19 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista confirme una solicitud de cita web pendiente asignándole una franja horaria.
 
+**Secuencia normal**
+
+1. El recepcionista abre la bandeja de solicitudes web.
+2. El sistema muestra las citas PENDIENTE ordenadas por fecha de solicitud, con el paciente, el servicio, la preferencia horaria y el motivo breve.
+3. El recepcionista selecciona una solicitud y elige «Confirmar».
+4. El sistema muestra las franjas en estado DISPONIBLE de los profesionales que prestan el servicio solicitado y que están dentro de la antelación permitida para citas web, con su fecha, horario, profesional y gabinete [REGN-003, REGN-006].
+5. El recepcionista selecciona una franja, el medio de notificación (correo electrónico o SMS) y, si quiere, escribe observaciones.
+6. El sistema comprueba que la franja sigue DISPONIBLE, que su profesional presta el servicio, que su duración cubre la del servicio y que, si el servicio requiere equipamiento especial, el gabinete lo tiene [REGN-002, REGN-006].
+7. El sistema asocia la franja a la cita, cambia la franja a OCUPADA y la cita a CONFIRMADA [REGN-010].
+8. El sistema registra el cambio de estado PENDIENTE → CONFIRMADA con las observaciones y el recepcionista que lo tramita [REGN-011].
+9. Se realiza el caso de uso CU-008 (Enviar notificación al paciente) con tipo «confirmación».
+10. El sistema retira la cita de la bandeja y la muestra en la agenda general.
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión en el panel interno y existe al menos una cita PENDIENTE de canal WEB.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita está CONFIRMADA y tiene franja; la franja está OCUPADA; el paciente ha sido notificado.]]></markdownProperty>
@@ -54,16 +67,5 @@
 
 **Comentarios:** Buen candidato para diagrama de secuencia (DAS 4).]]></markdownProperty>
   </properties>
-  <children>
-    <child id="e7VuyWpfU7UC"/>
-    <child id="WugNav9iS5Gt"/>
-    <child id="iPijfpePoToE"/>
-    <child id="wwhcR7AKtdPb"/>
-    <child id="4nBDc23aqcCb"/>
-    <child id="o62eU7Q48URe"/>
-    <child id="FYKLvxz728gs"/>
-    <child id="eSmnSEPMk8pL"/>
-    <child id="6WroFLVbNXy6"/>
-    <child id="ihftc7bgQA23"/>
-  </children>
+  <children/>
 </object>

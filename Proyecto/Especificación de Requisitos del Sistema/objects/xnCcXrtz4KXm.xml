@@ -17,6 +17,14 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un profesional sanitario consulte o actualice la ficha clínica de un paciente.
 
+**Secuencia normal**
+
+1. El sistema comprueba que el usuario es un profesional sanitario [REGN-014].
+2. El sistema registra el acceso a la ficha (profesional, fecha y hora) y muestra la ficha clínica del paciente: número de historia, fecha de apertura, antecedentes oculares y alergias.
+3. El sistema muestra el historial de consultas oftalmológicas del paciente, de la más reciente a la más antigua: fecha, agudeza visual y PIO de cada ojo, diagnóstico y tratamiento.
+4. Si lo necesita, el profesional actualiza los antecedentes oculares o las alergias.
+5. El sistema guarda los cambios.
+
 **Actor principal:** ACT-003 Profesional sanitario]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El profesional ha iniciado sesión y ha seleccionado una cita de su agenda (CU-012).]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[El profesional ha visto la ficha y el acceso ha quedado registrado; si la ha editado, los cambios quedan guardados.]]></markdownProperty>
@@ -45,11 +53,5 @@
 
 **Clases del DAS implicadas:** FichaClinica, ConsultaOftalmologica, Paciente]]></markdownProperty>
   </properties>
-  <children>
-    <child id="SPDJnGcsdamo"/>
-    <child id="N6wkMa5Wdtde"/>
-    <child id="5LzkiAwsTSAp"/>
-    <child id="mMFfvvPpVSjT"/>
-    <child id="HLrNVCAYmZEU"/>
-  </children>
+  <children/>
 </object>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="WugNav9iS5Gt" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 2]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema muestra las citas PENDIENTE ordenadas por fecha de solicitud, con el paciente, el servicio, la preferencia horaria y el motivo breve.]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

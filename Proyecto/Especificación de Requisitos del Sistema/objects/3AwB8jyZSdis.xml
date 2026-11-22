@@ -17,6 +17,16 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el administrador de contenidos cree o modifique una guía de salud visual o una pregunta frecuente.
 
+**Secuencia normal**
+
+1. El administrador accede a la sección de guías o a la de preguntas frecuentes.
+2. El sistema muestra los contenidos existentes con su estado de publicación.
+3. Para una guía, el administrador introduce título, dirección URL (slug) y texto; para una pregunta frecuente, pregunta, respuesta, categoría (Cita previa, Contactología, Tarifas y seguros o Cirugía) y orden de visualización.
+4. El sistema comprueba que los campos obligatorios están completos y que el slug no está repetido.
+5. El sistema guarda el contenido en estado BORRADOR y registra al administrador como redactor.
+6. Cuando el contenido está listo, el administrador elige «Enviar a validación».
+7. El sistema pasa el contenido a PENDIENTE_REVISION [REGN-007].
+
 **Actor principal:** ACT-005 Administrador de contenidos]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El administrador ha iniciado sesión.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[El contenido está guardado y, si se ha enviado, pendiente de validación clínica.]]></markdownProperty>
@@ -41,13 +51,5 @@
 
 **Clases del DAS implicadas:** ContenidoPublico, SeccionInformativa, PreguntaFrecuente, AdministradorContenidos]]></markdownProperty>
   </properties>
-  <children>
-    <child id="wQeKoFZWLdPn"/>
-    <child id="b6wGmrpL3cm5"/>
-    <child id="ZuqDiUTLq37X"/>
-    <child id="xGuh5QrqVSUf"/>
-    <child id="4WbYKiHLdbku"/>
-    <child id="RMosC5xazRKW"/>
-    <child id="w9Gemva8SCBE"/>
-  </children>
+  <children/>
 </object>

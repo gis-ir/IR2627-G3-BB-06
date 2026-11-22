@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="scj8bMJBm59G" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 4]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El recepcionista filtra por estado (todas, pendientes, confirmadas, atendidas, canceladas, reprogramadas o no presentadas), fecha o profesional.]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

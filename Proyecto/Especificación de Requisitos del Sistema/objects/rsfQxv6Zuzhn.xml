@@ -17,6 +17,14 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un visitante consulte las guías de salud visual o las preguntas frecuentes.
 
+**Secuencia normal**
+
+1. El visitante accede a «Salud visual y FAQ».
+2. El sistema muestra las guías en estado PUBLICADO [REGN-007].
+3. El sistema muestra las preguntas frecuentes en estado PUBLICADO ordenadas por su orden de visualización.
+4. El visitante filtra por categoría o escribe un texto de búsqueda.
+5. El sistema muestra las preguntas que cumplen el filtro.
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[Ninguna.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -40,11 +48,5 @@
 
 **Clases del DAS implicadas:** SeccionInformativa, PreguntaFrecuente]]></markdownProperty>
   </properties>
-  <children>
-    <child id="rxWDMx4mfdF7"/>
-    <child id="Z2JtDfjT8n3w"/>
-    <child id="7cLZxaqpweaC"/>
-    <child id="5PjJnfVvoNzc"/>
-    <child id="hmUNzwu6vZ8k"/>
-  </children>
+  <children/>
 </object>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="xGuh5QrqVSUf" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 4]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema comprueba que los campos obligatorios están completos y que el slug no está repetido.]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

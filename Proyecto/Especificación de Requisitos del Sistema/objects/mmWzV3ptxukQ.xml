@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="mmWzV3ptxukQ" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 1]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema recibe del caso de uso que lo incluye la cita, el tipo de notificación (acuse de solicitud, confirmación, reprogramación o cancelación) y el medio (correo electrónico o SMS).]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

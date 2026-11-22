@@ -17,6 +17,15 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un paciente quiera conocer el estado de sus citas y los avisos recibidos.
 
+**Secuencia normal**
+
+1. El paciente accede a «Mis citas».
+2. El sistema pide el DNI/NIE y el código de una de sus solicitudes.
+3. El paciente introduce ambos datos.
+4. El sistema muestra las citas del paciente ordenadas por fecha: código, servicio, estado y, si está confirmada, fecha, hora, profesional y gabinete.
+5. El sistema muestra las notificaciones enviadas al paciente: tipo, medio y fecha de envío.
+6. Para cada cita PENDIENTE o CONFIRMADA, el sistema ofrece la opción de cancelarla (punto de extensión «cancelar cita», CU-007).
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[Ninguna.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -44,12 +53,5 @@
 
 **Comentarios:** **[A COORDINAR]** El prototipo sólo pide el DNI. Se propone pedir también el código de solicitud para que nadie pueda ver las citas de otra persona sabiendo su DNI (RGPD, RQNF-016).]]></markdownProperty>
   </properties>
-  <children>
-    <child id="Rh3oMRNa8kZC"/>
-    <child id="A58HjucNiEqf"/>
-    <child id="f6d54xxjQwD4"/>
-    <child id="ffPmjtveyaxc"/>
-    <child id="yEdA8D9CsPAH"/>
-    <child id="oKXAopoEs6d6"/>
-  </children>
+  <children/>
 </object>

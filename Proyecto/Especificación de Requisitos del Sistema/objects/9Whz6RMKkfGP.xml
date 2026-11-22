@@ -17,6 +17,14 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista revise el historial de cambios de estado y de notificaciones.
 
+**Secuencia normal**
+
+1. El recepcionista accede a «Auditoría».
+2. El sistema muestra el historial de cambios de estado (fecha y hora, cita, estado anterior, estado nuevo, observaciones y quién lo tramitó), del más reciente al más antiguo.
+3. El sistema muestra el registro de notificaciones (cita, tipo, medio, fecha y si se entregó), destacando las no entregadas.
+4. El recepcionista puede filtrar por código de cita.
+5. El sistema muestra sólo los registros de esa cita.
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión en el panel interno.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta). Los registros no se pueden modificar ni borrar.]]></markdownProperty>
@@ -42,11 +50,5 @@
 
 **Comentarios:** Materializa la trazabilidad de citas prometida en los objetivos del proyecto.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="koBof6sqrMT5"/>
-    <child id="iLbXNvoPsc5D"/>
-    <child id="Eh6UxqSAfDNo"/>
-    <child id="BWXgCJR7aCna"/>
-    <child id="fySCvafAjyby"/>
-  </children>
+  <children/>
 </object>

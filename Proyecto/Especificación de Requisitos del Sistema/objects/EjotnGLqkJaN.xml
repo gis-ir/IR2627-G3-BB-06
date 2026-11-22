@@ -17,6 +17,16 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el administrador de contenidos aplique o rechace una petición de cambio de la web.
 
+**Secuencia normal**
+
+1. El administrador abre la bandeja de peticiones de cambio.
+2. El sistema muestra las peticiones PENDIENTE con fecha, solicitante, tipo de contenido y descripción.
+3. El administrador selecciona una petición.
+4. El administrador modifica o crea el contenido afectado tal como se describe en CU-017 o CU-018 y lo envía a validación.
+5. El sistema deja el contenido en estado PENDIENTE_REVISION [REGN-007].
+6. El administrador marca la petición como aplicada.
+7. El sistema pasa la petición a APLICADA, guarda la fecha de resolución y el administrador que la aplicó, y avisa de que hay contenido pendiente de validación clínica.
+
 **Actor principal:** ACT-005 Administrador de contenidos]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El administrador ha iniciado sesión y existe al menos una petición PENDIENTE.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La petición está APLICADA y el contenido afectado espera validación en CU-019.]]></markdownProperty>
@@ -41,13 +51,5 @@
 
 **Clases del DAS implicadas:** PeticionCambioWeb, AdministradorContenidos, ContenidoPublico]]></markdownProperty>
   </properties>
-  <children>
-    <child id="jsuavNQBuxEU"/>
-    <child id="KmbzcwTBszpC"/>
-    <child id="uonqvaf4S8pg"/>
-    <child id="uoc3SdMFEYWm"/>
-    <child id="2DRyMBKk5ig8"/>
-    <child id="aaFLKC3Cxv6o"/>
-    <child id="MRjFebyPJ3pj"/>
-  </children>
+  <children/>
 </object>

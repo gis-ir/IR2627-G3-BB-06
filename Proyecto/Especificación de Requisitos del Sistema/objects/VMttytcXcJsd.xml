@@ -17,6 +17,13 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un visitante consulte la cartera de servicios de la clínica.
 
+**Secuencia normal**
+
+1. El visitante accede a «Especialidades».
+2. El sistema muestra los servicios en estado PUBLICADO con nombre, descripción, duración estimada y tarifa base [REGN-007].
+3. El visitante selecciona un servicio.
+4. El sistema muestra el detalle y los profesionales que lo prestan, con la opción «Pedir cita» (que inicia CU-001 con el servicio ya elegido).
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[Ninguna.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -41,10 +48,5 @@
 
 **Clases del DAS implicadas:** ServicioOftalmologico, PrestacionServicio, ProfesionalSanitario]]></markdownProperty>
   </properties>
-  <children>
-    <child id="7T7J7fLubmSt"/>
-    <child id="yxhfaExCCg2L"/>
-    <child id="Z9Qn22otk4R6"/>
-    <child id="SjgeYmYTmVtb"/>
-  </children>
+  <children/>
 </object>

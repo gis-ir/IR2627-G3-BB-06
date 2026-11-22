@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="iLbXNvoPsc5D" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 2]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema muestra el historial de cambios de estado (fecha y hora, cita, estado anterior, estado nuevo, observaciones y quién lo tramitó), del más reciente al más antiguo.]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

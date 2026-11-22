@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="Wrstf4ikMiKE" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 7]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema registra los cambios de estado de ambas citas con el motivo y el recepcionista [REGN-011].]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

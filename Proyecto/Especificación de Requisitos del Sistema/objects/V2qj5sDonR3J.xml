@@ -17,6 +17,15 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un profesional sanitario pida que se publique, modifique o retire información de la web.
 
+**Secuencia normal**
+
+1. El profesional elige «Solicitar cambio web».
+2. El sistema muestra el formulario: tipo de contenido (servicio oftalmológico, guía de salud visual o pregunta frecuente) y la lista de contenidos de ese tipo.
+3. El profesional elige el tipo, el contenido afectado (o indica que es un contenido nuevo) y describe el cambio.
+4. El sistema comprueba que la descripción no está vacía.
+5. El sistema registra la petición con la fecha de solicitud, la descripción, el solicitante, los contenidos afectados y el estado PENDIENTE.
+6. El sistema confirma el envío; la petición aparece en la bandeja del administrador de contenidos.
+
 **Actor principal:** ACT-003 Profesional sanitario]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El profesional ha iniciado sesión en la estación clínica.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Existe una petición de cambio PENDIENTE asociada al profesional que la solicita.]]></markdownProperty>
@@ -41,12 +50,5 @@
 
 **Comentarios:** Junto con CU-016 y CU-019 cubre el proceso BPRO-002.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="55g4jiWDQqky"/>
-    <child id="yPeLpytXUYgr"/>
-    <child id="GVX5EbK9nyUr"/>
-    <child id="zfF2dtcKT7ba"/>
-    <child id="rmHZZoPXQqnG"/>
-    <child id="CSzpXcC2uoLB"/>
-  </children>
+  <children/>
 </object>

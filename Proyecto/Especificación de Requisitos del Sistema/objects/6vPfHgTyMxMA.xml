@@ -17,6 +17,16 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista cree o desactive franjas horarias de la agenda.
 
+**Secuencia normal**
+
+1. El recepcionista accede al gestor de franjas y gabinetes.
+2. El sistema muestra las franjas por fecha con su profesional, gabinete, horario y estado (DISPONIBLE, OCUPADA o INACTIVA).
+3. Si el recepcionista quiere crear una franja, introduce fecha, hora de inicio, hora de fin, profesional y gabinete.
+4. El sistema comprueba que la hora de fin es posterior a la de inicio y que ni el profesional ni el gabinete tienen otra franja activa que se solape ese día [REGN-001].
+5. El sistema registra la franja en estado DISPONIBLE.
+6. Si el recepcionista quiere retirar de la agenda una franja DISPONIBLE, la selecciona y elige «Desactivar».
+7. El sistema pasa la franja a INACTIVA y actualiza la lista.
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión en el panel interno.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La agenda refleja las franjas creadas y las desactivadas.]]></markdownProperty>
@@ -45,13 +55,5 @@
 
 **Comentarios:** Los pasos 3–5 (crear) y 6–7 (desactivar) son alternativos. INACTIVA es un estado final según el diagrama de estados de FranjaHoraria del DAS.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="nnM3noeeh6mW"/>
-    <child id="Es2fEzDQTExn"/>
-    <child id="dfVWteLeWxB8"/>
-    <child id="wfyPk4XeThiA"/>
-    <child id="5aD8P7RapZQ9"/>
-    <child id="LAm5k92HitjZ"/>
-    <child id="2qfRiLMwwMSL"/>
-  </children>
+  <children/>
 </object>

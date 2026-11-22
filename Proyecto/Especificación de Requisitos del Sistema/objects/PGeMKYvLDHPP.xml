@@ -17,6 +17,17 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un paciente cancele una de sus citas activas desde la web.
 
+**Secuencia normal**
+
+1. El paciente pulsa «Cancelar» en una cita activa.
+2. El sistema muestra los datos de la cita y pide confirmación.
+3. El paciente confirma la cancelación.
+4. Si la cita tiene franja asignada, el sistema comprueba que faltan al menos 24 horas para su inicio [REGN-005].
+5. El sistema pasa la cita a CANCELADA y, si tenía franja, la deja en estado DISPONIBLE [REGN-002].
+6. El sistema registra el cambio de estado sin recepcionista, con la observación «Cancelación solicitada por el paciente desde el portal web» [REGN-011].
+7. Se realiza el caso de uso CU-008 con tipo «cancelación» por correo electrónico.
+8. El sistema actualiza la lista de citas del paciente.
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El paciente está consultando sus citas (CU-006) y la cita elegida está PENDIENTE o CONFIRMADA.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita está CANCELADA y su franja, si la tenía, vuelve a estar disponible.]]></markdownProperty>
@@ -51,14 +62,5 @@
 
 **Comentarios:** El plazo mínimo para cancelar online es el de REGN-005 (24 horas).]]></markdownProperty>
   </properties>
-  <children>
-    <child id="XqeqKDg6827p"/>
-    <child id="MocDp2CHW8yR"/>
-    <child id="NmqBnjjtbZdJ"/>
-    <child id="ZJtgi5AnDipz"/>
-    <child id="EbRsuMaRrEUY"/>
-    <child id="NWKPJDEoBLeX"/>
-    <child id="8WaTyDEfxrxC"/>
-    <child id="LszGyESMqNKD"/>
-  </children>
+  <children/>
 </object>

@@ -17,6 +17,18 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un profesional sanitario registre el resultado de la atención de una cita.
 
+**Secuencia normal**
+
+1. El profesional elige «Registrar consulta» sobre la cita seleccionada.
+2. Se realiza el caso de uso CU-013 (Consultar ficha clínica).
+3. El sistema comprueba que la cita está CONFIRMADA y que el profesional es el titular de su franja [REGN-008, REGN-010].
+4. El profesional introduce agudeza visual OD y OI, PIO OD y OI, el diagnóstico y, si procede, el tratamiento prescrito.
+5. El sistema comprueba que el diagnóstico no está vacío y que los valores numéricos están en un rango válido.
+6. Si el paciente no tiene ficha clínica, el sistema la abre con un número de historia nuevo y la fecha del día.
+7. El sistema registra la consulta oftalmológica con la fecha y hora de atención, asociada a la ficha, a la cita y al profesional.
+8. El sistema pasa la cita a ATENDIDA y registra el cambio de estado [REGN-011].
+9. El sistema muestra la nueva consulta en el historial de la ficha.
+
 **Actor principal:** ACT-003 Profesional sanitario]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El profesional ha iniciado sesión y ha seleccionado una cita de su agenda del día (CU-012).]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita está ATENDIDA y la ficha del paciente contiene la nueva consulta.]]></markdownProperty>
@@ -49,15 +61,5 @@
 
 **Comentarios:** Corresponde a BR-01 del DAS. Buen candidato para diagrama de secuencia (DAS 4).]]></markdownProperty>
   </properties>
-  <children>
-    <child id="GrBVetMww9z2"/>
-    <child id="LQahWpAdbZVP"/>
-    <child id="KbQHHc5D8nQ5"/>
-    <child id="muCb6oXAMq37"/>
-    <child id="cT4xQcsiPnC5"/>
-    <child id="W6fL6nuZ2Wwc"/>
-    <child id="eaYo3L4UZKgp"/>
-    <child id="a7oXughyj872"/>
-    <child id="9C6ZwV67XSKq"/>
-  </children>
+  <children/>
 </object>

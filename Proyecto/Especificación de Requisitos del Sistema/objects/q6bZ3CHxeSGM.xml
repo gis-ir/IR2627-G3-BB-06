@@ -17,6 +17,13 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un visitante pregunte una duda al asistente virtual de la web (disponible 24 h).
 
+**Secuencia normal**
+
+1. El visitante abre el asistente virtual y escribe su pregunta.
+2. El sistema busca la respuesta en las preguntas frecuentes, las guías y los servicios publicados [REGN-013].
+3. El sistema muestra la respuesta y un enlace al contenido del que procede.
+4. Si la pregunta es sobre citas, el sistema ofrece iniciar CU-001.
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[Ninguna.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -43,10 +50,5 @@
 
 **Comentarios:** Se mantiene porque el ERS ya lo recoge en RQG-002 y REGN-013, aunque no aparezca en el prototipo.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="dVo6oRBuS8qp"/>
-    <child id="vSfTK89jcisC"/>
-    <child id="8Up2kWGWGzfJ"/>
-    <child id="rQ9PD7BaweTa"/>
-  </children>
+  <children/>
 </object>

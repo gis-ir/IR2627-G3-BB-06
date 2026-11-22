@@ -17,6 +17,17 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista cambie la fecha, la hora o el profesional de una cita confirmada.
 
+**Secuencia normal**
+
+1. El recepcionista localiza la cita en la agenda general (CU-010) y elige «Reprogramar».
+2. El sistema muestra los datos de la cita y las franjas DISPONIBLE compatibles con su servicio.
+3. El recepcionista elige la nueva franja, escribe el motivo y elige el medio de notificación.
+4. El sistema comprueba que la nueva franja sigue DISPONIBLE y es compatible con el servicio [REGN-002, REGN-006].
+5. El sistema crea una cita nueva con nuevo código, el mismo paciente, servicio y canal, estado CONFIRMADA y la nueva franja, y la enlaza con la original (reprogramaA: citaOriginal → citaNueva).
+6. El sistema pasa la cita original a REPROGRAMADA, libera su franja (DISPONIBLE) y ocupa la nueva (OCUPADA).
+7. El sistema registra los cambios de estado de ambas citas con el motivo y el recepcionista [REGN-011].
+8. Se realiza el caso de uso CU-008 con tipo «reprogramación», con la nueva fecha, hora, profesional y gabinete.
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión, la cita está CONFIRMADA y su franja aún no ha comenzado.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita original está REPROGRAMADA y enlazada con una cita nueva CONFIRMADA; la franja antigua está DISPONIBLE y la nueva OCUPADA.]]></markdownProperty>
@@ -51,14 +62,5 @@
 
 **Comentarios:** Reprogramar no modifica la cita original: crea otra y las enlaza, para no perder trazabilidad. Buen candidato para diagrama de secuencia (DAS 4).]]></markdownProperty>
   </properties>
-  <children>
-    <child id="2K3v99niGAMZ"/>
-    <child id="f84ChQg6trHK"/>
-    <child id="WtDGxwYJHFAy"/>
-    <child id="VjtpE2CEcmZW"/>
-    <child id="xjKTKRZB4iSF"/>
-    <child id="vYkLc5JSy5hy"/>
-    <child id="Wrstf4ikMiKE"/>
-    <child id="d7yrgywnJeug"/>
-  </children>
+  <children/>
 </object>

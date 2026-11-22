@@ -17,6 +17,19 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista registre una cita solicitada por teléfono o en el mostrador de la clínica.
 
+**Secuencia normal**
+
+1. El recepcionista selecciona «Nueva cita telefónica / presencial».
+2. El sistema muestra el formulario con el canal (TELEFONICO o PRESENCIAL), los datos del paciente, los servicios y las franjas en estado DISPONIBLE.
+3. El recepcionista elige el canal e introduce el DNI del paciente.
+4. El sistema busca al paciente por DNI y, si existe, rellena sus datos.
+5. El recepcionista completa o corrige nombre, apellidos, fecha de nacimiento, teléfono y correo, marca que el paciente ha aceptado la política de privacidad [REGN-009] y elige el servicio y una franja disponible.
+6. El sistema comprueba que la franja sigue DISPONIBLE y es compatible con el servicio [REGN-002, REGN-006].
+7. El sistema registra al paciente si es nuevo y la cita con el canal elegido, estado CONFIRMADA y la franja asociada; la franja pasa a OCUPADA.
+8. El sistema registra el cambio de estado (sin estado anterior → CONFIRMADA) con el recepcionista que lo tramita [REGN-011].
+9. Se realiza el caso de uso CU-008 con tipo «confirmación» por SMS (o por correo electrónico si el paciente no tiene móvil).
+10. El sistema muestra el código de la cita.
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión en el panel interno.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Existe una cita CONFIRMADA de canal TELEFONICO o PRESENCIAL con su franja OCUPADA.]]></markdownProperty>
@@ -51,16 +64,5 @@
 
 **Comentarios:** La confirmación supervisada (REGN-012 / BR-04) sólo afecta al canal WEB: las citas telefónicas y presenciales nacen CONFIRMADA. En el prototipo, al dar de alta un paciente nuevo por teléfono se rellena una fecha de nacimiento ficticia; aquí se exige pedirla, porque es obligatoria en Paciente.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="Lcdt76u9jyFS"/>
-    <child id="8Drgd7W9Uh5j"/>
-    <child id="ZVjfY9vwWpUd"/>
-    <child id="ibWJdrNjUEnQ"/>
-    <child id="Fu4KfsZeYtLd"/>
-    <child id="MGcb5KwJkEx4"/>
-    <child id="bDXcLMHMhMRd"/>
-    <child id="6cJdHp7qGtwP"/>
-    <child id="GmgAJWe3x2jT"/>
-    <child id="NxLDdzv2qyWT"/>
-  </children>
+  <children/>
 </object>

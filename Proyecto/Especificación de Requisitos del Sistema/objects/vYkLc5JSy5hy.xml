@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="vYkLc5JSy5hy" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 6]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema pasa la cita original a REPROGRAMADA, libera su franja (DISPONIBLE) y ocupa la nueva (OCUPADA).]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

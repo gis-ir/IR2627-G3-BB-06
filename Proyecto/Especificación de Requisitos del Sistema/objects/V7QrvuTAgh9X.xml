@@ -17,6 +17,18 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el administrador de contenidos dé de alta o modifique un servicio del catálogo.
 
+**Secuencia normal**
+
+1. El administrador accede al catálogo de servicios.
+2. El sistema muestra los servicios con su código, nombre, tarifa base y estado de publicación.
+3. El administrador elige «Nuevo servicio» o selecciona uno para editarlo.
+4. El administrador introduce código, nombre, descripción pública, duración estimada en minutos, tarifa base y si requiere equipamiento especial.
+5. El administrador indica qué profesionales lo prestan y, si procede, una tarifa específica y la fecha de habilitación de cada uno.
+6. El sistema comprueba que el código es único, que la duración es mayor que cero y que las tarifas no son negativas.
+7. El sistema guarda el servicio en estado BORRADOR y registra al administrador como redactor; si el servicio estaba PUBLICADO, deja de mostrarse en la web hasta que se valide de nuevo.
+8. Cuando el servicio está listo, el administrador elige «Enviar a validación».
+9. El sistema pasa el servicio a PENDIENTE_REVISION [REGN-007].
+
 **Actor principal:** ACT-005 Administrador de contenidos]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El administrador ha iniciado sesión.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[El servicio y sus prestaciones están guardados y, si se ha enviado, pendientes de validación clínica.]]></markdownProperty>
@@ -44,15 +56,5 @@
 
 **Comentarios:** Sigue el diagrama de estados de ContenidoPublico del DAS: editar un contenido publicado lo devuelve a BORRADOR.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="BhhHp6cC8VTs"/>
-    <child id="P3v4WLo78cdv"/>
-    <child id="T57UkKqZkXBd"/>
-    <child id="VmPsKuhsyrrd"/>
-    <child id="fwsyEjcZ5mqm"/>
-    <child id="y9Speu8ssKZk"/>
-    <child id="wvnEvmxbDVpp"/>
-    <child id="SrL3vcZiwduB"/>
-    <child id="UsE5kzmMP83J"/>
-  </children>
+  <children/>
 </object>

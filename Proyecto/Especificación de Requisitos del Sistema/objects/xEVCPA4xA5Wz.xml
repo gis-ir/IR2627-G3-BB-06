@@ -17,6 +17,13 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando otro caso de uso necesite comunicar al paciente un cambio en su cita.
 
+**Secuencia normal**
+
+1. El sistema recibe del caso de uso que lo incluye la cita, el tipo de notificación (acuse de solicitud, confirmación, reprogramación o cancelación) y el medio (correo electrónico o SMS).
+2. El sistema compone el mensaje con el código de la cita, el servicio, el estado y, si tiene franja, la fecha, la hora, el profesional y el gabinete.
+3. El sistema envía el mensaje a través del servicio de mensajería.
+4. El sistema registra la notificación asociada a la cita con su tipo, medio, fecha y hora de envío y si se ha entregado.
+
 **Actor principal:** — (caso de uso incluido; lo ejecuta el sistema)]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[Se acaba de registrar un cambio de estado de la cita y el paciente tiene correo electrónico o teléfono móvil.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[La notificación queda registrada y asociada a la cita.]]></markdownProperty>
@@ -43,10 +50,5 @@
 
 **Comentarios:** **[A COORDINAR con el Miembro 4]** `TipoNotificacion` en el DAS no incluye «acuse de solicitud» (lo usa CU-001): añadir ese valor o quitar el paso 10 de CU-001. No se usa el teléfono como medio porque `MedioNotificacion = {EMAIL, SMS}`.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="mmWzV3ptxukQ"/>
-    <child id="m9Sf2oaXZ85S"/>
-    <child id="EypxtJhmCPgE"/>
-    <child id="iECv35FR8bVr"/>
-  </children>
+  <children/>
 </object>

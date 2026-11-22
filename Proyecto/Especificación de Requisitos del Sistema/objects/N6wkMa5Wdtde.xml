@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="N6wkMa5Wdtde" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 2]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema registra el acceso a la ficha (profesional, fecha y hora) y muestra la ficha clínica del paciente: número de historia, fecha de apertura, antecedentes oculares y alergias.]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

@@ -17,6 +17,12 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un profesional sanitario consulte las citas que tiene asignadas en el día.
 
+**Secuencia normal**
+
+1. El profesional accede a su agenda clínica.
+2. El sistema muestra las citas CONFIRMADA y ATENDIDA del día cuyas franjas son suyas, ordenadas por hora, con el paciente, el servicio, el gabinete y el motivo breve.
+3. El profesional selecciona una cita para ver la ficha del paciente (CU-013) o registrar la consulta (CU-014).
+
 **Actor principal:** ACT-003 Profesional sanitario]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El profesional ha iniciado sesión en la estación clínica.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -40,9 +46,5 @@
 
 **Clases del DAS implicadas:** Cita, FranjaHoraria, Paciente, ServicioOftalmologico, Gabinete]]></markdownProperty>
   </properties>
-  <children>
-    <child id="2Rs3uJRXynMr"/>
-    <child id="R8DaDyd3vXoz"/>
-    <child id="QGF7YE6DvYgm"/>
-  </children>
+  <children/>
 </object>

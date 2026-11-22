@@ -17,6 +17,13 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un visitante consulte quiénes son los profesionales de la clínica y con qué gabinetes cuenta.
 
+**Secuencia normal**
+
+1. El visitante accede a «Cuadro médico» o a «Instalaciones».
+2. El sistema muestra cada profesional con nombre, especialidad, biografía pública, formación y los servicios publicados que presta.
+3. El sistema muestra cada gabinete con su nombre y el equipamiento disponible.
+4. El sistema muestra la dirección, el teléfono y el horario de la clínica.
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[Ninguna.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -41,10 +48,5 @@
 
 **Comentarios:** La dirección, el teléfono y el horario están en RQI-013 (Datos generales de la clínica), pero no en el modelo de clases del DAS.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="NtUmRDSSSnjx"/>
-    <child id="HYubxZ9wYcEq"/>
-    <child id="YLfS9Za6FpR9"/>
-    <child id="Z3UYczff2iP2"/>
-  </children>
+  <children/>
 </object>

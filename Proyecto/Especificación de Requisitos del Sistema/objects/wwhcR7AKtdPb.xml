@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object id="wwhcR7AKtdPb" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
-  <properties>
-    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 4]]></stringProperty>
-    <markdownProperty name="description" category="general"><![CDATA[El sistema muestra las franjas en estado DISPONIBLE de los profesionales que prestan el servicio solicitado y que están dentro de la antelación permitida para citas web, con su fecha, horario, profesional y gabinete [REGN-003, REGN-006].]]></markdownProperty>
-    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
-  </properties>
-  <children/>
-</object>

@@ -17,6 +17,14 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista consulte las citas de la clínica.
 
+**Secuencia normal**
+
+1. El recepcionista accede a la agenda general.
+2. El sistema muestra un resumen: solicitudes web pendientes, citas confirmadas, franjas disponibles y notificaciones emitidas.
+3. El sistema muestra las citas con código, canal, paciente, servicio, franja, gabinete y estado.
+4. El recepcionista filtra por estado (todas, pendientes, confirmadas, atendidas, canceladas, reprogramadas o no presentadas), fecha o profesional.
+5. El sistema muestra las citas que cumplen el filtro y, para cada cita CONFIRMADA, las acciones «Reprogramar» (CU-004) y «Cancelar» (CU-005).
+
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión en el panel interno.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Ninguna (consulta).]]></markdownProperty>
@@ -41,11 +49,5 @@
 
 **Clases del DAS implicadas:** Cita, Paciente, ServicioOftalmologico, FranjaHoraria, Gabinete]]></markdownProperty>
   </properties>
-  <children>
-    <child id="SDHQYcJQGr5b"/>
-    <child id="HUtKgTTCrf7Z"/>
-    <child id="T2rWEUCyiSdZ"/>
-    <child id="scj8bMJBm59G"/>
-    <child id="S3GWuGVn8ixY"/>
-  </children>
+  <children/>
 </object>

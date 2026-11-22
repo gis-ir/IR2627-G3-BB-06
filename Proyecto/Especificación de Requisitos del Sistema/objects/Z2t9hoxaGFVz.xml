@@ -17,6 +17,20 @@
     </traceProperty>
     <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un paciente solicite una cita previa desde la web pública.
 
+**Secuencia normal**
+
+1. El paciente selecciona «Solicitar cita» (o «Pedir cita» desde la ficha de un servicio, con lo que llega con ese servicio ya elegido).
+2. El sistema muestra el formulario de solicitud con los servicios publicados y las preferencias horarias: mañana, tarde o indiferente.
+3. El paciente introduce DNI/NIE, nombre, apellidos, fecha de nacimiento, teléfono móvil y correo electrónico; elige el servicio y su preferencia horaria y, si quiere, escribe un motivo breve.
+4. El paciente acepta la política de privacidad y envía la solicitud [REGN-009].
+5. El sistema comprueba que todos los campos obligatorios están completos y tienen un formato válido.
+6. El sistema busca al paciente por su DNI. Si no existe, lo registra; si existe, actualiza su teléfono, correo y preferencia horaria. En ambos casos guarda la fecha y hora del consentimiento RGPD.
+7. El sistema comprueba que el paciente no supera el número máximo de citas activas solicitadas por web [REGN-004].
+8. El sistema registra la cita con un código único, la fecha y hora de solicitud, canal WEB y estado PENDIENTE, sin franja horaria asignada [REGN-012].
+9. El sistema registra el primer cambio de estado de la cita (sin estado anterior → PENDIENTE) [REGN-011].
+10. Se realiza el caso de uso CU-008 (Enviar notificación al paciente) con tipo «acuse de solicitud» por correo electrónico.
+11. El sistema muestra el resguardo con el código de solicitud, el estado PENDIENTE y el aviso de que recepción le confirmará día, hora y gabinete.
+
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El paciente está en la web pública y hay al menos un servicio oftalmológico en estado PUBLICADO.]]></markdownProperty>
     <markdownProperty name="postcondition" category="pre-post"><![CDATA[Existe una cita PENDIENTE del paciente, sin franja, en la bandeja de solicitudes web de recepción.]]></markdownProperty>
@@ -53,17 +67,5 @@
 
 **Comentarios:** Concreta BPRO-001 con el modelo de confirmación supervisada del DAS (BR-04): el paciente ya no elige franja; la asigna recepción en CU-002.]]></markdownProperty>
   </properties>
-  <children>
-    <child id="aMi6hcVvQLfa"/>
-    <child id="KDujupBx43cg"/>
-    <child id="uTjiSCiPepw6"/>
-    <child id="3xgTzRQJvC2X"/>
-    <child id="2BjiW59Yk4BG"/>
-    <child id="snVEcHwVHpiw"/>
-    <child id="AixeeKkjSEhH"/>
-    <child id="T2tagQLyoRbE"/>
-    <child id="vCgfFXGDUoZn"/>
-    <child id="8WuSKSqf7Emc"/>
-    <child id="QNpsVjAk9jiT"/>
-  </children>
+  <children/>
 </object>
