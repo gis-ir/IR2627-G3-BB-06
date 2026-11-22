@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="bDXcLMHMhMRd" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 7]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema registra al paciente si es nuevo y la cita con el canal elegido, estado CONFIRMADA y la franja asociada; la franja pasa a OCUPADA.]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="Fu4KfsZeYtLd" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 5]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El recepcionista completa o corrige nombre, apellidos, fecha de nacimiento, teléfono y correo, marca que el paciente ha aceptado la política de privacidad [REGN-009] y elige el servicio y una franja disponible.]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

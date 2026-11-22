@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="FX4aWJkDTUGx" classes="software-requirement use-case" acceptedChildren="use-case-step" acceptedParents=":Proteus-any">
+  <properties>
+    <codeProperty name=":Proteus-code" category="general" inmutable="true">
+      <prefix><![CDATA[CU-]]></prefix>
+      <number>019</number>
+      <suffix><![CDATA[]]></suffix>
+    </codeProperty>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Validar y publicar contenido]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author">
+      <trace target="NfKzyuMHn4rN" traceType=":Proteus-author"/>
+    </traceProperty>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source">
+      <trace target="V3qq9ajkiS62" traceType=":Proteus-information-source"/>
+    </traceProperty>
+    <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el responsable clínico revise el contenido pendiente y lo publique en la web.
+
+**Actor principal:** ACT-004 Responsable clínico]]></markdownProperty>
+    <markdownProperty name="precondition" category="pre-post"><![CDATA[El responsable clínico ha iniciado sesión y hay contenido en estado PENDIENTE_REVISION.]]></markdownProperty>
+    <markdownProperty name="postcondition" category="pre-post"><![CDATA[El contenido está PUBLICADO y validado por un responsable clínico.]]></markdownProperty>
+    <enumProperty name="importance" category="priority" tooltip="importance" choices="tbd critical high medium low optional">high</enumProperty>
+    <enumProperty name="urgency" category="priority" tooltip="urgency" choices="tbd high medium low">medium</enumProperty>
+    <enumProperty name="status" category="priority" tooltip="status" choices="tbd draft awaiting-qa awaiting-validation validated">draft</enumProperty>
+    <enumProperty name="stability" category="priority" tooltip="stability" choices="tbd low medium high">medium</enumProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object business-requirement software-requirement" traceType=":Proteus-dependency">
+      <trace target="WG5jyAymY9uQ" traceType=":Proteus-dependency"/>
+      <trace target="5rbF39DDwbiJ" traceType=":Proteus-dependency"/>
+      <trace target="n69g6mnr92Lx" traceType=":Proteus-dependency"/>
+      <trace target="bnSywxJZVEt7" traceType=":Proteus-dependency"/>
+      <trace target="BjBaJGKWwQuW" traceType=":Proteus-dependency"/>
+    </traceProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[**Excepciones**
+
+- **Paso 3:** Si el responsable clínico no lo aprueba, escribe el motivo y el sistema devuelve el contenido a BORRADOR; a continuación este caso de uso queda sin efecto.
+- **Paso 4:** Si el usuario no es responsable clínico, el sistema bloquea la publicación; a continuación este caso de uso queda sin efecto.
+
+**Relaciones:** —
+
+**Frecuencia esperada:** Semanal
+
+**Clases del DAS implicadas:** ContenidoPublico, ServicioOftalmologico, SeccionInformativa, PreguntaFrecuente, ProfesionalSanitario
+
+**Comentarios:** Corresponde a BR-03 del DAS. Sustituye al paso final de BPRO-002 («la Dirección médica comprueba lo publicado»): ahora nada se publica sin esa validación.]]></markdownProperty>
+  </properties>
+  <children>
+    <child id="su38mmuPW2Hj"/>
+    <child id="cyfSUufdD7cB"/>
+    <child id="TdZi2eUECazH"/>
+    <child id="4roEXvzwrY3n"/>
+    <child id="H9fXXY2nKrf9"/>
+    <child id="ECNsY5Y3zPQc"/>
+  </children>
+</object>

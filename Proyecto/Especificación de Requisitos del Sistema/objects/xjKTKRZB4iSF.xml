@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="xjKTKRZB4iSF" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 5]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema crea una cita nueva con nuevo código, el mismo paciente, servicio y canal, estado CONFIRMADA y la nueva franja, y la enlaza con la original (reprogramaA: citaOriginal → citaNueva).]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

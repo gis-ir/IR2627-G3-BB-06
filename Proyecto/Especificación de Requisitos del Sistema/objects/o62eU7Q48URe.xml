@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="o62eU7Q48URe" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 6]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema comprueba que la franja sigue DISPONIBLE, que su profesional presta el servicio, que su duración cubre la del servicio y que, si el servicio requiere equipamiento especial, el gabinete lo tiene [REGN-002, REGN-006].]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

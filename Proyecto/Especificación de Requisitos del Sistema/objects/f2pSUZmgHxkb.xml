@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="f2pSUZmgHxkb" classes="software-requirement use-case" acceptedChildren="use-case-step" acceptedParents=":Proteus-any">
+  <properties>
+    <codeProperty name=":Proteus-code" category="general" inmutable="true">
+      <prefix><![CDATA[CU-]]></prefix>
+      <number>004</number>
+      <suffix><![CDATA[]]></suffix>
+    </codeProperty>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Reprogramar cita]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author">
+      <trace target="NfKzyuMHn4rN" traceType=":Proteus-author"/>
+    </traceProperty>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source">
+      <trace target="V3qq9ajkiS62" traceType=":Proteus-information-source"/>
+    </traceProperty>
+    <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista cambie la fecha, la hora o el profesional de una cita confirmada.
+
+**Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
+    <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión, la cita está CONFIRMADA y su franja aún no ha comenzado.]]></markdownProperty>
+    <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita original está REPROGRAMADA y enlazada con una cita nueva CONFIRMADA; la franja antigua está DISPONIBLE y la nueva OCUPADA.]]></markdownProperty>
+    <enumProperty name="importance" category="priority" tooltip="importance" choices="tbd critical high medium low optional">high</enumProperty>
+    <enumProperty name="urgency" category="priority" tooltip="urgency" choices="tbd high medium low">high</enumProperty>
+    <enumProperty name="status" category="priority" tooltip="status" choices="tbd draft awaiting-qa awaiting-validation validated">draft</enumProperty>
+    <enumProperty name="stability" category="priority" tooltip="stability" choices="tbd low medium high">medium</enumProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object business-requirement software-requirement" traceType=":Proteus-dependency">
+      <trace target="bwXDXEeQNkay" traceType=":Proteus-dependency"/>
+      <trace target="Jv4HKpnVeu2U" traceType=":Proteus-dependency"/>
+      <trace target="4DQUjESdzRqM" traceType=":Proteus-dependency"/>
+      <trace target="5mFqwrHbqpnd" traceType=":Proteus-dependency"/>
+      <trace target="UsAsrxJgop5h" traceType=":Proteus-dependency"/>
+      <trace target="ozdSMoQXtQhu" traceType=":Proteus-dependency"/>
+      <trace target="qdTAcwTG5F8F" traceType=":Proteus-dependency"/>
+      <trace target="5BYBNpFLRcrc" traceType=":Proteus-dependency"/>
+      <trace target="hgUVQgTZZtLn" traceType=":Proteus-dependency"/>
+      <trace target="idLfpzV3S58v" traceType=":Proteus-dependency"/>
+      <trace target="xEVCPA4xA5Wz" traceType=":Proteus-dependency"/>
+    </traceProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[**Excepciones**
+
+- **Paso 1:** Si la franja de la cita ya ha comenzado o la cita no está CONFIRMADA, el sistema no ofrece la opción de reprogramar; a continuación este caso de uso queda sin efecto.
+- **Paso 2:** Si no hay franjas disponibles compatibles, el sistema lo indica y ofrece crear una (CU-009); a continuación este caso de uso queda sin efecto.
+- **Paso 4:** Si la franja elegida ha dejado de estar disponible, el sistema lo indica; a continuación este caso de uso continúa en el paso 2.
+
+**Relaciones:** «include» CU-008
+
+**Frecuencia esperada:** Varias veces por semana
+
+**Clases del DAS implicadas:** Cita (reprogramaA), FranjaHoraria, Gabinete, CambioEstadoCita, Notificacion, Recepcionista
+
+**Comentarios:** Reprogramar no modifica la cita original: crea otra y las enlaza, para no perder trazabilidad. Buen candidato para diagrama de secuencia (DAS 4).]]></markdownProperty>
+  </properties>
+  <children>
+    <child id="2K3v99niGAMZ"/>
+    <child id="f84ChQg6trHK"/>
+    <child id="WtDGxwYJHFAy"/>
+    <child id="VjtpE2CEcmZW"/>
+    <child id="xjKTKRZB4iSF"/>
+    <child id="vYkLc5JSy5hy"/>
+    <child id="Wrstf4ikMiKE"/>
+    <child id="d7yrgywnJeug"/>
+  </children>
+</object>
