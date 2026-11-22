@@ -9,46 +9,44 @@
     </traceProperty>
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
     <markdownProperty name="text" category="detail"><![CDATA[#### 10. `Paciente`
-- **Descripción:** Persona física que solicita o recibe asistencia médica en la clínica oftalmológica.
+- **Descripción:** Persona física que solicita asistencia médica en la clínica oftalmológica y dispone de una única ficha clínica asociada.
 - **Atributos:**
-  - `idPaciente: String` `[1]` — Identificador único del paciente.
-  - `dni: String` `[1]` — Documento nacional de identidad o pasaporte.
-  - `nombre: String` `[1]` — Nombre del paciente.
-  - `apellidos: String` `[1]` — Apellidos del paciente.
-  - `fechaNacimiento: Date` `[1]` — Fecha de nacimiento.
-  - `telefono: String` `[1]` — Teléfono principal de contacto.
-  - `email: String` `[0..1]` — Correo electrónico para notificaciones.
-  - `consentimientoRGPD: Boolean` `[1]` — Aceptación expresa del tratamiento de datos sanitarios.
+  - `dni: Texto (único)` `[1]` — Documento nacional de identidad o pasaporte del paciente.
+  - `nombre: Texto` `[1]` — Nombre del paciente.
+  - `apellidos: Texto` `[1]` — Apellidos del paciente.
+  - `fechaNacimiento: Fecha` `[1]` — Fecha de nacimiento.
+  - `telefono: Texto` `[1]` — Teléfono principal de contacto.
+  - `email: Texto` `[1]` — Correo electrónico de contacto.
+  - `preferenciaHoraria: PreferenciaHoraria` `[0..1]` — Franja preferida por el paciente (`MAÑANA`, `TARDE`, `INDIFERENTE`).
+  - `fechaConsentimientoRGPD: FechaHora` `[1]` — Marca temporal en la que otorgó el consentimiento de protección de datos.
 - **Asociaciones:**
-  - `posee` (`1` → `1` `FichaClinica`): Composición con su historial clínico único.
+  - `disponeDe` (`1..1` → `1..1` `FichaClinica`): Composición con su historia clínica única.
 
 #### 11. `FichaClinica`
-- **Descripción:** Historial médico centralizado del paciente donde se agrupan sus antecedentes oftalmológicos y todas las consultas realizadas.
+- **Descripción:** Historia clínica única del paciente donde se consolidan sus antecedentes y todas sus consultas oftalmológicas.
 - **Atributos:**
-  - `numeroHistoria: String` `[1]` — Código único de historia clínica.
-  - `fechaApertura: Date` `[1]` — Fecha de creación de la ficha.
-  - `antecedentesOculares: String` `[0..1]` — Patologías previas, alergias o cirugías oculares.
+  - `numHistoria: Texto (único)` `[1]` — Número identificativo único de historia clínica.
+  - `fechaApertura: Fecha` `[1]` — Fecha de apertura de la ficha.
+  - `antecedentesOculares: Texto` `[0..1]` — Antecedentes oftalmológicos relevantes.
+  - `alergias: Texto` `[0..1]` — Alergias medicamentosas o clínicas conocidas.
 - **Asociaciones:**
-  - `contiene` (`1` → `0..*` `ConsultaOftalmologica`): Composición con los actos médicos registrados.
+  - `contiene` (`1..1` → `0..*` `ConsultaOftalmologica`): Composición con las consultas realizadas al paciente.
 
 #### 12. `ConsultaOftalmologica`
-- **Descripción:** Acto clínico documentado tras la atención efectiva de una cita, que recoge las mediciones diagnósticas y el tratamiento pautado.
+- **Descripción:** Registro médico de la atención prestada durante una cita efectivamente atendida.
 - **Atributos:**
-  - `idConsulta: String` `[1]` — Identificador único de la consulta.
-  - `fechaHora: DateTime` `[1]` — Fecha y hora de realización del acto clínico.
-  - `agudezaVisualOD: String` `[0..1]` — Medición de agudeza visual en ojo derecho.
-  - `agudezaVisualOI: String` `[0..1]` — Medición de agudeza visual en ojo izquierdo.
-  - `presionIntraocularOD: Float` `[0..1]` — Tonometría en ojo derecho (mmHg).
-  - `presionIntraocularOI: Float` `[0..1]` — Tonometría en ojo izquierdo (mmHg).
-  - `diagnostico: String` `[1]` — Juicio clínico del facultativo.
-  - `tratamiento: String` `[0..1]` — Prescripción farmacológica, óptica o quirúrgica.
+  - `fechaHoraAtencion: FechaHora` `[1]` — Fecha y hora en que se realiza la consulta.
+  - `agudezaVisualOD: Real` `[0..1]` — Agudeza visual medida en el ojo derecho.
+  - `agudezaVisualOI: Real` `[0..1]` — Agudeza visual medida en el ojo izquierdo.
+  - `pioOD: Real` `[0..1]` — Presión intraocular en ojo derecho (mmHg).
+  - `pioOI: Real` `[0..1]` — Presión intraocular en ojo izquierdo (mmHg).
+  - `diagnostico: Texto` `[1]` — Diagnóstico clínico establecido.
+  - `tratamientoPrescrito: Texto` `[0..1]` — Tratamiento pautado al paciente.
 - **Asociaciones:**
-  - `documenta` (`0..1` ← `1` `Cita`): Cita atendida que origina la consulta.
-  - `realizadaPor` (`0..*` → `1` `ProfesionalSanitario`): Facultativo que firma la consulta.
-  - `registra` (`1` → `1..*` `PrestacionServicio`): Servicios médicos efectivamente prestados.
+  - `daLugarA` (`1..1` → `0..1` `Cita`): Cita atendida que origina la consulta.
+  - Asociación con `ProfesionalSanitario` (`0..*` → `1..1`): Facultativo responsable de la atención.
 - **Restricciones OCL (`[BR-01]` - Coherencia de asistencia):**
-  - `inv CitaDebeEstarAtendida`: `self.cita.estadoActual = EstadoCita::ATENDIDA`
-  - `inv CoherenciaProfesionalCita`: `self.cita.franjaHoraria->notEmpty() and self.profesional = self.cita.franjaHoraria.profesional`]]></markdownProperty>
+]]></markdownProperty>
     <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
     <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
   </properties>
