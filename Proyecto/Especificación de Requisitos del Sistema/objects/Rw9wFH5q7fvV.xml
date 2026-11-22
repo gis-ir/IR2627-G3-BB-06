@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="Rw9wFH5q7fvV" classes="traceable-object figure" acceptedChildren=":Proteus-none" acceptedParents=":Proteus-any">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Figura 5.1.2 — Intranet Clínica]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author"/>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
+    <fileProperty name="file" category="detail" tooltip="file-info"><![CDATA[5.1.2_intranetfinal-1 (2).png]]></fileProperty>
+    <urlProperty name="url" category="detail"><![CDATA[]]></urlProperty>
+    <integerProperty name="width" category="detail" tooltip="width-info">80</integerProperty>
+    <markdownProperty name="description" category="detail"><![CDATA[Diagrama de navegación: Intranet Clínica. Muestra la estructura de acceso y navegación interna del personal de la clínica (PersonalClinica), ramificada según su perfil activo entre las vistas de Recepción, Consulta Médica y Contenidos y Validación.]]></markdownProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>
