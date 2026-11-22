@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="wvnEvmxbDVpp" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 7]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema guarda el servicio en estado BORRADOR y registra al administrador como redactor; si el servicio estaba PUBLICADO, deja de mostrarse en la web hasta que se valide de nuevo.]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="oKXAopoEs6d6" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 6]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[Para cada cita PENDIENTE o CONFIRMADA, el sistema ofrece la opción de cancelarla (punto de extensión «cancelar cita», CU-007).]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

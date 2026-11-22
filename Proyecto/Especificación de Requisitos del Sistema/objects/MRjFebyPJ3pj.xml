@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="MRjFebyPJ3pj" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 7]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema pasa la petición a APLICADA, guarda la fecha de resolución y el administrador que la aplicó, y avisa de que hay contenido pendiente de validación clínica.]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

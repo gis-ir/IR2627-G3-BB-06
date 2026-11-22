@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="T2tagQLyoRbE" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 8]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema registra la cita con un código único, la fecha y hora de solicitud, canal WEB y estado PENDIENTE, sin franja horaria asignada [REGN-012].]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

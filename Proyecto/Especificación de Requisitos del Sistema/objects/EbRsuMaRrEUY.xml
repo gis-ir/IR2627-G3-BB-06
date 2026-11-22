@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="EbRsuMaRrEUY" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 5]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema pasa la cita a CANCELADA y, si tenía franja, la deja en estado DISPONIBLE [REGN-002].]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="yxhfaExCCg2L" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 2]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema muestra los servicios en estado PUBLICADO con nombre, descripción, duración estimada y tarifa base [REGN-007].]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

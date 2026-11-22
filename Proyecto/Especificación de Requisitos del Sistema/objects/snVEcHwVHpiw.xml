@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="snVEcHwVHpiw" classes="use-case-step" acceptedChildren=":Proteus-none" acceptedParents="use-case">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Paso 6]]></stringProperty>
+    <markdownProperty name="description" category="general"><![CDATA[El sistema busca al paciente por su DNI. Si no existe, lo registra; si existe, actualiza su teléfono, correo y preferencia horaria. En ambos casos guarda la fecha y hora del consentimiento RGPD.]]></markdownProperty>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>
