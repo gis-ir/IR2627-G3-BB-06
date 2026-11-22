@@ -20,20 +20,22 @@
 **Secuencia normal**
 
 1. El paciente selecciona «Solicitar cita» (o «Pedir cita» desde la ficha de un servicio, con lo que llega con ese servicio ya elegido).
-2. El sistema muestra el formulario de solicitud con los servicios publicados y las preferencias horarias: mañana, tarde o indiferente.
-3. El paciente introduce DNI/NIE, nombre, apellidos, fecha de nacimiento, teléfono móvil y correo electrónico; elige el servicio y su preferencia horaria y, si quiere, escribe un motivo breve.
-4. El paciente acepta la política de privacidad y envía la solicitud [REGN-009].
-5. El sistema comprueba que todos los campos obligatorios están completos y tienen un formato válido.
-6. El sistema busca al paciente por su DNI. Si no existe, lo registra; si existe, actualiza su teléfono, correo y preferencia horaria. En ambos casos guarda la fecha y hora del consentimiento RGPD.
-7. El sistema comprueba que el paciente no supera el número máximo de citas activas solicitadas por web [REGN-004].
-8. El sistema registra la cita con un código único, la fecha y hora de solicitud, canal WEB y estado PENDIENTE, sin franja horaria asignada [REGN-012].
-9. El sistema registra el primer cambio de estado de la cita (sin estado anterior → PENDIENTE) [REGN-011].
-10. Se realiza el caso de uso CU-008 (Enviar notificación al paciente) con tipo «acuse de solicitud» por correo electrónico.
-11. El sistema muestra el resguardo con el código de solicitud, el estado PENDIENTE y el aviso de que recepción le confirmará día, hora y gabinete.
+2. El sistema muestra los servicios publicados y las franjas horarias en estado DISPONIBLE de los profesionales que prestan el servicio elegido, dentro de la antelación permitida [REGN-003, REGN-006].
+3. El paciente selecciona el servicio y elige una franja horaria disponible (fecha, hora y profesional).
+4. El sistema comprueba en tiempo real que la franja sigue DISPONIBLE y la bloquea provisionalmente durante 5 minutos para evitar dobles reservas [RQF-002].
+5. El paciente introduce DNI/NIE, nombre, apellidos, fecha de nacimiento, teléfono móvil, correo electrónico y, si quiere, un motivo breve.
+6. El paciente acepta la política de privacidad y envía la solicitud [REGN-009].
+7. El sistema comprueba que todos los campos obligatorios están completos y tienen un formato válido.
+8. El sistema busca al paciente por su DNI. Si no existe, lo registra; si existe, actualiza su teléfono y correo. En ambos casos guarda la fecha y hora del consentimiento RGPD.
+9. El sistema comprueba que el paciente no supera el número máximo de citas activas solicitadas por web [REGN-004].
+10. El sistema registra la cita con un código único, la fecha y hora de solicitud, canal WEB, la franja horaria seleccionada (que pasa a OCUPADA) y estado PENDIENTE [REGN-002, REGN-012].
+11. El sistema registra el primer cambio de estado de la cita (sin estado anterior → PENDIENTE) [REGN-011].
+12. Se realiza el caso de uso CU-008 (Enviar notificación al paciente) con tipo «acuse de solicitud» por correo electrónico.
+13. El sistema muestra el resguardo con el código de solicitud, la franja solicitada, el estado PENDIENTE y el aviso de que recepción confirmará la cita definitivamente.
 
 **Actor principal:** ACT-001 Paciente / visitante]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El paciente está en la web pública y hay al menos un servicio oftalmológico en estado PUBLICADO.]]></markdownProperty>
-    <markdownProperty name="postcondition" category="pre-post"><![CDATA[Existe una cita PENDIENTE del paciente, sin franja, en la bandeja de solicitudes web de recepción.]]></markdownProperty>
+    <markdownProperty name="postcondition" category="pre-post"><![CDATA[Existe una cita PENDIENTE del paciente, con su franja horaria reservada (OCUPADA), en la bandeja de solicitudes web de recepción.]]></markdownProperty>
     <enumProperty name="importance" category="priority" tooltip="importance" choices="tbd critical high medium low optional">critical</enumProperty>
     <enumProperty name="urgency" category="priority" tooltip="urgency" choices="tbd high medium low">high</enumProperty>
     <enumProperty name="status" category="priority" tooltip="status" choices="tbd draft awaiting-qa awaiting-validation validated">draft</enumProperty>
@@ -54,18 +56,20 @@
     </traceProperty>
     <markdownProperty name="comments" category="comments"><![CDATA[**Excepciones**
 
-- **Paso 4:** Si el paciente no acepta la política de privacidad, el sistema no permite enviar la solicitud y lo indica; a continuación este caso de uso continúa en el paso 4.
-- **Paso 5:** Si falta algún dato obligatorio o el DNI, el correo o el teléfono no tienen un formato válido, el sistema marca los campos erróneos; a continuación este caso de uso continúa en el paso 3.
-- **Paso 6:** Si el DNI ya existe pero el nombre, los apellidos o la fecha de nacimiento no coinciden con los registrados, el sistema no registra la solicitud y pide al paciente que contacte con la clínica; a continuación este caso de uso queda sin efecto.
-- **Paso 7:** Si el paciente ya tiene el máximo de citas activas solicitadas por web, el sistema lo indica y le ofrece el teléfono de la clínica; a continuación este caso de uso queda sin efecto.
+* **Paso 4:** Si la franja elegida ha dejado de estar libre, el sistema propone automáticamente las tres franjas libres más próximas para el mismo servicio [RQF-001]; a continuación este caso de uso continúa en el paso 3.
+* **Paso 4:** Si expiran los 5 minutos de bloqueo temporal sin enviar la solicitud, el sistema libera la franja automáticamente [RQF-002] y avisa al paciente; a continuación este caso de uso continúa en el paso 3.
+* **Paso 6:** Si el paciente no acepta la política de privacidad, el sistema no permite enviar la solicitud y lo indica; a continuación este caso de uso continúa en el paso 6.
+* **Paso 7:** Si falta algún dato obligatorio o el DNI, el correo o el teléfono no tienen un formato válido, el sistema marca los campos erróneos; a continuación este caso de uso continúa en el paso 5.
+* **Paso 8:** Si el DNI ya existe pero el nombre, los apellidos o la fecha de nacimiento no coinciden con los registrados, el sistema no registra la solicitud y pide al paciente que contacte con la clínica; a continuación este caso de uso queda sin efecto.
+* **Paso 9:** Si el paciente ya tiene el máximo de citas activas solicitadas por web, el sistema libera la franja, lo indica y ofrece el teléfono de la clínica; a continuación este caso de uso queda sin efecto.
 
 **Relaciones:** «include» CU-008
 
 **Frecuencia esperada:** Varias veces al día
 
-**Clases del DAS implicadas:** Paciente, Cita, CambioEstadoCita, ServicioOftalmologico, Notificacion
+**Clases del DAS implicadas:** Paciente, Cita, FranjaHoraria, ProfesionalSanitario, CambioEstadoCita, ServicioOftalmologico, Notificacion
 
-**Comentarios:** Concreta BPRO-001 con el modelo de confirmación supervisada del DAS (BR-04): el paciente ya no elige franja; la asigna recepción en CU-002.]]></markdownProperty>
+**Comentarios:** Concreta BPRO-001: el paciente elige una franja disponible en tiempo real, pero la cita queda en estado PENDIENTE hasta la revisión y confirmación manual por recepción en CU-002.]]></markdownProperty>
   </properties>
   <children/>
 </object>

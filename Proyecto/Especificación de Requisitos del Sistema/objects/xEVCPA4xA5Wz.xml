@@ -48,7 +48,7 @@
 
 **Clases del DAS implicadas:** Notificacion, Cita, Paciente
 
-**Comentarios:** **[A COORDINAR con el Miembro 4]** `TipoNotificacion` en el DAS no incluye «acuse de solicitud» (lo usa CU-001): añadir ese valor o quitar el paso 10 de CU-001. No se usa el teléfono como medio porque `MedioNotificacion = {EMAIL, SMS}`.]]></markdownProperty>
+**Comentarios:** ]]></markdownProperty>
   </properties>
   <children/>
 </object>

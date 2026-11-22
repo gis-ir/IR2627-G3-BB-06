@@ -15,24 +15,23 @@
     <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source">
       <trace target="V3qq9ajkiS62" traceType=":Proteus-information-source"/>
     </traceProperty>
-    <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista confirme una solicitud de cita web pendiente asignándole una franja horaria.
+    <markdownProperty name="description" category="detail"><![CDATA[El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando un recepcionista revise y confirme una solicitud de cita web pendiente.
 
 **Secuencia normal**
 
 1. El recepcionista abre la bandeja de solicitudes web.
-2. El sistema muestra las citas PENDIENTE ordenadas por fecha de solicitud, con el paciente, el servicio, la preferencia horaria y el motivo breve.
-3. El recepcionista selecciona una solicitud y elige «Confirmar».
-4. El sistema muestra las franjas en estado DISPONIBLE de los profesionales que prestan el servicio solicitado y que están dentro de la antelación permitida para citas web, con su fecha, horario, profesional y gabinete [REGN-003, REGN-006].
-5. El recepcionista selecciona una franja, el medio de notificación (correo electrónico o SMS) y, si quiere, escribe observaciones.
-6. El sistema comprueba que la franja sigue DISPONIBLE, que su profesional presta el servicio, que su duración cubre la del servicio y que, si el servicio requiere equipamiento especial, el gabinete lo tiene [REGN-002, REGN-006].
-7. El sistema asocia la franja a la cita, cambia la franja a OCUPADA y la cita a CONFIRMADA [REGN-010].
-8. El sistema registra el cambio de estado PENDIENTE → CONFIRMADA con las observaciones y el recepcionista que lo tramita [REGN-011].
-9. Se realiza el caso de uso CU-008 (Enviar notificación al paciente) con tipo «confirmación».
-10. El sistema retira la cita de la bandeja y la muestra en la agenda general.
+2. El sistema muestra las citas PENDIENTE ordenadas por fecha de solicitud, con el paciente, el servicio, la franja horaria solicitada (fecha, hora, profesional y gabinete) y el motivo breve.
+3. El recepcionista selecciona una solicitud, verifica la disponibilidad y adecuación de la franja solicitada y elige «Confirmar».
+4. El recepcionista elige el medio de notificación (correo electrónico o SMS) y, si quiere, escribe observaciones.
+5. El sistema comprueba que la cita sigue PENDIENTE y que la franja asociada es compatible con el servicio y el equipamiento del gabinete [REGN-006].
+6. El sistema cambia el estado de la cita a CONFIRMADA manteniendo la franja en estado OCUPADA [REGN-010].
+7. El sistema registra el cambio de estado PENDIENTE → CONFIRMADA con las observaciones y el recepcionista que lo tramita [REGN-011].
+8. Se realiza el caso de uso CU-008 (Enviar notificación al paciente) con tipo «confirmación».
+9. El sistema retira la cita de la bandeja y la muestra en la agenda general.
 
 **Actor principal:** ACT-002 Recepcionista]]></markdownProperty>
     <markdownProperty name="precondition" category="pre-post"><![CDATA[El recepcionista ha iniciado sesión en el panel interno y existe al menos una cita PENDIENTE de canal WEB.]]></markdownProperty>
-    <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita está CONFIRMADA y tiene franja; la franja está OCUPADA; el paciente ha sido notificado.]]></markdownProperty>
+    <markdownProperty name="postcondition" category="pre-post"><![CDATA[La cita está CONFIRMADA con su franja OCUPADA y el paciente ha sido notificado.]]></markdownProperty>
     <enumProperty name="importance" category="priority" tooltip="importance" choices="tbd critical high medium low optional">critical</enumProperty>
     <enumProperty name="urgency" category="priority" tooltip="urgency" choices="tbd high medium low">high</enumProperty>
     <enumProperty name="status" category="priority" tooltip="status" choices="tbd draft awaiting-qa awaiting-validation validated">draft</enumProperty>
@@ -55,9 +54,8 @@
     </traceProperty>
     <markdownProperty name="comments" category="comments"><![CDATA[**Excepciones**
 
-- **Paso 3:** Si el recepcionista rechaza la solicitud (por ejemplo, servicio que no se presta o datos incorrectos), indica el motivo; el sistema pasa la cita a CANCELADA, registra el cambio de estado y se realiza CU-008 con tipo «cancelación»; a continuación este caso de uso queda sin efecto.
-- **Paso 4:** Si no hay franjas disponibles compatibles con el servicio, el sistema lo indica y ofrece crear una (CU-009); a continuación este caso de uso queda sin efecto.
-- **Paso 6:** Si la franja ha dejado de estar disponible o no es compatible con el servicio, el sistema lo indica; a continuación este caso de uso continúa en el paso 4.
+* **Paso 3:** Si el recepcionista rechaza la solicitud (por ejemplo, servicio que no se presta o datos incorrectos), indica el motivo; el sistema pasa la cita a CANCELADA, libera su franja a estado DISPONIBLE [RQF-003], registra el cambio de estado y se realiza CU-008 con tipo «cancelación»; a continuación este caso de uso queda sin efecto.
+* **Paso 3:** Si el recepcionista necesita ajustar la franja solicitada antes de confirmar, selecciona otra franja DISPONIBLE compatible con el servicio [REGN-006]; el sistema libera la franja anterior y ocupa la nueva antes de continuar en el paso 4.
 
 **Relaciones:** «include» CU-008
 
