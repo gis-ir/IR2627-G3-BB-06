@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="YvMEkQq2QEiw" classes="traceable-object paragraph" acceptedChildren=":Proteus-none" acceptedParents=":Proteus-document section" selectedCategory="detail">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Gestión Clínica y Pacientes]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author">
+      <trace target="2S4YtgY2VH2p" traceType=":Proteus-author"/>
+    </traceProperty>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
+    <markdownProperty name="text" category="detail"><![CDATA[#### 10. `Paciente`
+- **Descripción:** Persona física que solicita asistencia médica en la clínica oftalmológica y dispone de una única ficha clínica asociada.
+- **Atributos:**
+  - `dni: Texto (único)` `[1]` — Documento nacional de identidad o pasaporte del paciente.
+  - `nombre: Texto` `[1]` — Nombre del paciente.
+  - `apellidos: Texto` `[1]` — Apellidos del paciente.
+  - `fechaNacimiento: Fecha` `[1]` — Fecha de nacimiento.
+  - `telefono: Texto` `[1]` — Teléfono principal de contacto.
+  - `email: Texto` `[1]` — Correo electrónico de contacto.
+  - `preferenciaHoraria: PreferenciaHoraria` `[0..1]` — Franja preferida por el paciente (`MAÑANA`, `TARDE`, `INDIFERENTE`).
+  - `fechaConsentimientoRGPD: FechaHora` `[1]` — Marca temporal en la que otorgó el consentimiento de protección de datos.
+- **Asociaciones:**
+  - `disponeDe` (`1..1` → `1..1` `FichaClinica`): Composición con su historia clínica única.
+
+#### 11. `FichaClinica`
+- **Descripción:** Historia clínica única del paciente donde se consolidan sus antecedentes y todas sus consultas oftalmológicas.
+- **Atributos:**
+  - `numHistoria: Texto (único)` `[1]` — Número identificativo único de historia clínica.
+  - `fechaApertura: Fecha` `[1]` — Fecha de apertura de la ficha.
+  - `antecedentesOculares: Texto` `[0..1]` — Antecedentes oftalmológicos relevantes.
+  - `alergias: Texto` `[0..1]` — Alergias medicamentosas o clínicas conocidas.
+- **Asociaciones:**
+  - `contiene` (`1..1` → `0..*` `ConsultaOftalmologica`): Composición con las consultas realizadas al paciente.
+
+#### 12. `ConsultaOftalmologica`
+- **Descripción:** Registro médico de la atención prestada durante una cita efectivamente atendida.
+- **Atributos:**
+  - `fechaHoraAtencion: FechaHora` `[1]` — Fecha y hora en que se realiza la consulta.
+  - `agudezaVisualOD: Real` `[0..1]` — Agudeza visual medida en el ojo derecho.
+  - `agudezaVisualOI: Real` `[0..1]` — Agudeza visual medida en el ojo izquierdo.
+  - `pioOD: Real` `[0..1]` — Presión intraocular en ojo derecho (mmHg).
+  - `pioOI: Real` `[0..1]` — Presión intraocular en ojo izquierdo (mmHg).
+  - `diagnostico: Texto` `[1]` — Diagnóstico clínico establecido.
+  - `tratamientoPrescrito: Texto` `[0..1]` — Tratamiento pautado al paciente.
+- **Asociaciones:**
+  - `daLugarA` (`1..1` → `0..1` `Cita`): Cita atendida que origina la consulta.
+  - Asociación con `ProfesionalSanitario` (`0..*` → `1..1`): Facultativo responsable de la atención.
+- **Restricciones OCL (`[BR-01]` - Coherencia de asistencia):**
+]]></markdownProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

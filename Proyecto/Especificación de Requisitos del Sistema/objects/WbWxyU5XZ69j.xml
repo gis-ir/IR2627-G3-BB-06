@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="WbWxyU5XZ69j" classes="traceable-object paragraph" acceptedChildren=":Proteus-none" acceptedParents=":Proteus-document section" selectedCategory="detail">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Gestión de Personal y Roles de la Clínica]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author">
+      <trace target="2S4YtgY2VH2p" traceType=":Proteus-author"/>
+    </traceProperty>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
+    <markdownProperty name="text" category="detail"><![CDATA[#### 1. `PersonalClinica` (Clase abstracta)
+- **Descripción:** Clase base abstracta que representa a cualquier empleado dado de alta en la clínica oftalmológica. Su especialización (`rolPersonal`) es `{complete, overlapping}`, por lo que un empleado puede desempeñar uno o varios roles simultáneamente.
+- **Atributos:**
+  - `idEmpleado: Texto (único)` `[1]` — Identificador único del empleado en el sistema.
+  - `nombre: Texto` `[1]` — Nombre propio del empleado.
+  - `apellidos: Texto` `[1]` — Apellidos del empleado.
+  - `email: Texto` `[1]` — Correo electrónico corporativo.
+  - `telefono: Texto` `[1]` — Teléfono de contacto.
+  - `activo: Booleano` `[1]` — Indica si el empleado está activo en el sistema.
+- **Relaciones:** Generalización `{complete, overlapping}` hacia `AdministradorContenidos`, `ProfesionalSanitario` y `Recepcionista`.
+
+#### 2. `ProfesionalSanitario` (Especialización de `PersonalClinica`)
+- **Descripción:** Personal médico y optometrista que dispone de agenda, presta servicios oftalmológicos, atiende consultas y, si es responsable clínico, valida contenidos públicos.
+- **Atributos:**
+  - `numColegiado: Texto (único)` `[1]` — Número oficial de colegiación sanitaria.
+  - `especialidad: Texto` `[1]` — Especialidad clínica del profesional.
+  - `biografiaPublica: Texto` `[0..1]` — Perfil profesional mostrado en el portal web.
+  - `formacion: Texto` `[0..1]` — Titulación y formación académica relevante.
+  - `esResponsableClinico: Booleano` `[1]` — Indica si tiene autorización para validar contenidos públicos médicos (`[BR-03]`).
+- **Asociaciones:**
+  - `disponeDe` (`1..1` → `0..*` `FranjaHoraria`): Tramos horarios asignados a su agenda.
+  - `presta` (`1..*` ↔ `1..*` `ServicioOftalmologico` mediante `PrestacionServicio`): Servicios que está habilitado para realizar.
+  - `valida` (`0..1` → `0..*` `ContenidoPublico`): Contenidos públicos aprobados clínicamente.
+  - `solicita` (`1..1` → `0..*` `PeticionCambioWeb`): Peticiones de actualización web enviadas.
+  - Asociación con `ConsultaOftalmologica` (`1..1` → `0..*`): Consultas atendidas por el facultativo.
+
+#### 3. `Recepcionista` (Especialización de `PersonalClinica`)
+- **Descripción:** Personal administrativo encargado de tramitar las solicitudes de cita, acordar franjas horarias y confirmar las citas recibidas por canal web.
+- **Atributos:**
+  - `turnoAsignado: TurnoLaboral` `[1]` — Turno laboral asignado al recepcionista.
+- **Asociaciones:**
+  - `tramita` (`0..1` → `0..*` `Cita`): Citas gestionadas y confirmadas desde recepción.
+
+#### 4. `AdministradorContenidos` (Especialización de `PersonalClinica`)
+- **Descripción:** Perfil encargado de redactar y mantener los contenidos del portal web y aplicar las peticiones de cambio solicitadas por el personal sanitario.
+- **Atributos:**
+  - `nivelAcceso: Texto` `[1]` — Nivel de privilegios dentro del gestor de contenidos web.
+- **Asociaciones:**
+  - `redacta` (`1..1` → `0..*` `ContenidoPublico`): Contenidos públicos creados o editados.
+  - `aplica` (`0..1` → `0..*` `PeticionCambioWeb`): Peticiones de cambio web resueltas.]]></markdownProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>
