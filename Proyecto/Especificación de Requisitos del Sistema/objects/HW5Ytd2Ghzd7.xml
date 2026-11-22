@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="HW5Ytd2Ghzd7" classes="traceable-object paragraph" acceptedChildren=":Proteus-none" acceptedParents=":Proteus-document section" selectedCategory="detail">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Descripción de Arquitectura del sistema]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author">
+      <trace target="2S4YtgY2VH2p" traceType=":Proteus-author"/>
+    </traceProperty>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
+    <markdownProperty name="text" category="detail"><![CDATA[**1. Patrón arquitectónico general**
+
+El sistema de información sigue una arquitectura cliente-servidor estructurada bajo una variante del patrón **Modelo-Vista-Controlador (MVC) en tres capas lógicas** (**Presentación**, **Lógica de Negocio** y **Persistencia de Datos**), complementada con una conexión hacia un servicio externo de mensajería. Esta separación desacopla la interfaz de usuario de la lógica clínica y del almacenamiento, mejorando la mantenibilidad y la seguridad de los datos médicos.
+
+**2. Componentes principales por capa**
+
+- **Capa de Presentación (Vista):** Gestiona la interacción con los distintos perfiles de usuario mediante navegador web y delega todas las operaciones a los controladores. Se compone de dos módulos:
+  - *PortalWebPublico:* Accesible para pacientes y visitantes para consultar el catálogo de servicios oftalmológicos, secciones informativas y preguntas frecuentes, así como para registrar solicitudes de cita previa online.
+  - *IntranetClinica:* Interfaz interna con control de acceso por roles para el personal activo de la clínica (`Recepcionista`, `ProfesionalSanitario` y `AdministradorContenidos`), adaptando las vistas disponibles según el perfil autenticado.
+- **Capa de Lógica de Negocio (Controladores y Servicios):** Recibe las peticiones de la capa de presentación, coordina los flujos de trabajo y verifica el cumplimiento de las reglas de negocio antes de modificar los datos:
+  - *ControladorCitasYAgenda:* Administra las franjas horarias de profesionales y gabinetes, tramita solicitudes y reprogramaciones de citas, registra el historial de cambios de estado (`CambioEstadoCita`) y asegura la ausencia de solapamientos (`BR-02`) y la confirmación supervisada de citas web (`BR-04`).
+  - *ControladorClinico:* Gestiona el alta de pacientes, el consentimiento RGPD, las fichas clínicas y el registro de consultas oftalmológicas, garantizando la coherencia entre la cita atendida y el facultativo titular (`BR-01`).
+  - *ControladorContenidos:* Controla la edición de servicios, preguntas frecuentes y secciones informativas, tramita peticiones de cambio web y exige la validación previa de un responsable clínico antes de su publicación (`BR-03`).
+  - *ServicioNotificacionesYSeguridad:* Gestiona la autenticación y autorización del personal de la clínica y coordina la generación de avisos (`Notificacion`).
+- **Capa de Persistencia (Modelo / Datos):** Implementada mediante *RepositorioDatos (SGBD Relacional)*, se encarga del almacenamiento seguro y durable de las entidades del dominio (`PersonalClinica`, `Paciente`, `Cita`, `FranjaHoraria`, `FichaClinica`, `ConsultaOftalmologica`, `ContenidoPublico`, etc.), garantizando su integridad referencial.
+
+**3. Interacciones y relaciones con otros sistemas**
+
+- **Comunicación interna:** Sigue un flujo descendente estricto donde la Capa de Presentación invoca exclusivamente las interfaces expuestas por los Controladores de la Capa de Lógica de Negocio, y estos acceden al repositorio de datos, impidiendo el acceso directo del cliente a la base de datos.
+- **Relación con sistemas externos:** El componente *ServicioNotificacionesYSeguridad* se comunica mediante protocolos estándar (SMTP / API REST) con un sistema externo (*ServicioMensajeriaExterno*) para materializar el envío de correos electrónicos y mensajes SMS de confirmación o recordatorio hacia los pacientes.]]></markdownProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>

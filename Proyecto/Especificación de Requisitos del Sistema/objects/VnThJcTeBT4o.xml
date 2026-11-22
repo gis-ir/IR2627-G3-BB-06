@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<object id="VnThJcTeBT4o" classes="traceable-object paragraph" acceptedChildren=":Proteus-none" acceptedParents=":Proteus-document section" selectedCategory="detail">
+  <properties>
+    <stringProperty name=":Proteus-name" category="general"><![CDATA[Catálogo de Servicios y Portal Web Público]]></stringProperty>
+    <dateProperty name=":Proteus-date" category="general">2026-11-22</dateProperty>
+    <stringProperty name="version" category="general"><![CDATA[1.0]]></stringProperty>
+    <traceProperty name="authors" category="general" acceptedTargets="stakeholder" traceType=":Proteus-author">
+      <trace target="2S4YtgY2VH2p" traceType=":Proteus-author"/>
+    </traceProperty>
+    <traceProperty name="sources" category="general" acceptedTargets="stakeholder" traceType=":Proteus-information-source"/>
+    <markdownProperty name="text" category="detail"><![CDATA[#### 13. `ServicioOftalmologico`
+- **Descripción:** Elemento del catálogo asistencial ofertado por la clínica (consultas diagnósticas, pruebas complementarias o intervenciones).
+- **Atributos:**
+  - `idServicio: String` `[1]` — Código único del servicio.
+  - `nombre: String` `[1]` — Nombre comercial y clínico del servicio.
+  - `descripcion: String` `[1]` — Detalle del procedimiento y preparación.
+  - `duracionEstimadaMin: Integer` `[1]` — Duración estándar en minutos.
+  - `precioOrientativo: Float` `[0..1]` — Tarifa de referencia.
+  - `activo: Boolean` `[1]` — Disponibilidad actual del servicio.
+
+#### 14. `PrestacionServicio`
+- **Descripción:** Clase asociativa que detalla cada servicio oftalmológico aplicado dentro de una consulta concreta y las observaciones clínicas asociadas.
+- **Atributos:**
+  - `cantidad: Integer` `[1]` — Número de unidades o pruebas realizadas.
+  - `observacionesClinicas: String` `[0..1]` — Notas técnicas de ejecución del servicio.
+
+#### 15. `ContenidoPublico` (Clase abstracta)
+- **Descripción:** Clase base para toda información divulgativa publicada en el portal web de la clínica, sujeta a flujo de revisión y validación clínica.
+- **Atributos:**
+  - `idContenido: String` `[1]` — Identificador único del contenido.
+  - `titulo: String` `[1]` — Encabezado visible en la web.
+  - `cuerpo: String` `[1]` — Texto completo del contenido.
+  - `estadoPublicacion: EstadoPublicacion` `[1]` — Estado editorial (`BORRADOR`, `PENDIENTE_REVISION`, `PUBLICADO`, `RETIRADO`).
+  - `fechaPublicacion: DateTime` `[0..1]` — Fecha de puesta en producción.
+- **Restricciones OCL (`[BR-03]` - Validación clínica obligatoria):**
+  - `inv PublicacionExigeResponsableClinico`: `self.estadoPublicacion = EstadoPublicacion::PUBLICADO implies (self.validador->notEmpty() and self.validador.esResponsableClinico = true and self.fechaPublicacion->notEmpty())`
+
+#### 16. `PreguntaFrecuente` (Especialización de `ContenidoPublico`)
+- **Descripción:** Contenido público estructurado en formato pregunta-respuesta para resolver dudas habituales de los pacientes.
+- **Atributos:**
+  - `categoria: String` `[1]` — Agrupación temática (ej. "Citas", "Cirugía", "Seguros").
+  - `ordenVisualizacion: Integer` `[1]` — Prioridad de ordenación en el listado web.
+
+#### 17. `SeccionInformativa` (Especialización de `ContenidoPublico`)
+- **Descripción:** Página o bloque informativo sobre patologías oculares, tratamientos, equipo médico o instalaciones de la clínica.
+- **Atributos:**
+  - `slugUrl: String` `[1]` — Identificador amigable para la ruta web.
+  - `resumen: String` `[0..1]` — Entradilla o descripción breve de la sección.
+
+#### 18. `PeticionCambioWeb`
+- **Descripción:** Solicitud formal emitida por un profesional sanitario para crear, actualizar o retirar información en el portal web.
+- **Atributos:**
+  - `idPeticion: String` `[1]` — Identificador de la solicitud.
+  - `descripcionCambio: String` `[1]` — Detalle de la modificación solicitada.
+  - `fechaSolicitud: DateTime` `[1]` — Momento de creación de la petición.
+  - `estado: EstadoPeticion` `[1]` — Estado de tramitación (`PENDIENTE`, `APLICADA`, `RECHAZADA`).
+  - `fechaResolucion: DateTime` `[0..1]` — Fecha en la que administración resuelve la petición.]]></markdownProperty>
+    <traceProperty name="dependencies" category="dependencies" acceptedTargets="traceable-object" traceType=":Proteus-dependency"/>
+    <markdownProperty name="comments" category="comments"><![CDATA[]]></markdownProperty>
+  </properties>
+  <children/>
+</object>
